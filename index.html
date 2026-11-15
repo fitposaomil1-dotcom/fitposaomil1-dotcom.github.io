@@ -1,0 +1,815 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FitAIO — sve za trening u jednoj aplikaciji</title>
+<meta name="description" content="FitAIO je Android aplikacija koja objedinjuje praćenje težine, zagrevanje, vežbe, programe, istezanje i praćenje napretka. Plan prema tvom cilju i opremi koju imaš. Za žene i muškarce.">
+<meta name="theme-color" content="#0A0F0D">
+<meta property="og:title" content="FitAIO — sve za trening u jednoj aplikaciji">
+<meta property="og:description" content="Jedna aplikacija umesto svih ostalih. Plan prema tvom cilju i opremi. Uskoro na Androidu.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="sr_RS">
+<!-- Kad stranica dobije konačnu adresu (npr. https://fitaio.rs), zameni je u sledeća tri reda. -->
+<meta property="og:url" content="https://fitposaomil1-dotcom.github.io/">
+<meta property="og:image" content="https://fitposaomil1-dotcom.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://fitposaomil1-dotcom.github.io/og-image.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="icon-192.png" type="image/png" sizes="192x192">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+:root{
+  --bg:#0A0F0D; --surface:#111917; --surface2:#17221E; --line:#24332D;
+  --text:#ECF4F0; --muted:#9BAFA6;
+  --lime:#C8F53C; --teal:#22D3C5; --ink:#0B1410;
+  --grad:linear-gradient(100deg,var(--lime),var(--teal));
+  --r:18px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  font-size:16px;line-height:1.55;overflow-x:hidden}
+h1,h2,h3{margin:0;line-height:1.12;letter-spacing:-.02em;font-weight:800}
+h1{font-size:clamp(2.1rem,8.5vw,4rem)}
+h2{font-size:clamp(1.6rem,6vw,2.6rem)}
+h3{font-size:1.1rem}
+p{margin:0}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+.wrap{width:100%;max-width:1100px;margin:0 auto;padding:0 18px}
+section{padding:64px 0}
+.eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);margin-bottom:12px}
+.lead{color:var(--muted);font-size:1.06rem;margin-top:14px;max-width:60ch}
+.gt{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;padding:0 26px;border-radius:999px;border:0;
+  background:var(--lime);color:var(--ink);font-weight:800;text-decoration:none;font-size:1rem;
+  box-shadow:0 8px 30px rgba(200,245,60,.25);transition:transform .15s,box-shadow .15s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(200,245,60,.35)}
+.btn:active{transform:translateY(0)}
+.btn.ghost{background:transparent;color:var(--text);border:1.5px solid var(--line);box-shadow:none}
+.btn.small{min-height:40px;padding:0 16px;font-size:.9rem}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+
+/* header */
+header{position:sticky;top:0;z-index:30;background:rgba(10,15,13,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-weight:900;font-size:1.3rem;letter-spacing:-.03em;text-decoration:none}
+.logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* hero */
+.hero{position:relative;padding:44px 0 56px}
+.hero::before{content:"";position:absolute;inset:-60px 0 0;pointer-events:none;
+  background:radial-gradient(520px 380px at 85% 20%,rgba(34,211,197,.20),transparent 70%),
+             radial-gradient(480px 360px at 5% 0%,rgba(200,245,60,.14),transparent 70%)}
+.hero .wrap{position:relative;display:grid;gap:40px}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.badge{font-size:.82rem;font-weight:600;color:var(--text);background:var(--surface2);border:1px solid var(--line);padding:6px 12px;border-radius:999px}
+.hero .cta{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px}
+.phone{width:min(300px,82vw);margin:0 auto;border-radius:38px;padding:12px;background:#050807;border:2px solid #2B3B35;
+  box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 70px rgba(34,211,197,.14)}
+.screen{border-radius:28px;background:linear-gradient(180deg,#131D1A,#0C1311);padding:18px 16px 20px;overflow:hidden}
+.screen .top{display:flex;justify-content:space-between;font-size:.74rem;color:var(--muted);font-weight:600}
+.screen .exname{font-weight:800;font-size:1.15rem;margin-top:10px}
+.fig{display:block;width:100%;height:auto}
+.fig line,.fig circle.h{stroke:url(#fg);fill:none;stroke-linecap:round}
+.fig circle.h{fill:url(#fg);stroke:none}
+.fig .ground{stroke:#2B3B35;stroke-width:2}
+.counter{display:flex;align-items:flex-end;justify-content:space-between;margin-top:4px}
+.counter .big{font-size:2.6rem;font-weight:900;line-height:1;font-variant-numeric:tabular-nums}
+.counter .big small{font-size:1.1rem;color:var(--muted);font-weight:700}
+.counter .lbl{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-weight:700}
+.setdots{display:flex;gap:6px;margin-top:6px;justify-content:flex-end}
+.setdots i{width:22px;height:6px;border-radius:3px;background:var(--line)}
+.setdots i.on{background:var(--lime)}
+.bar{height:8px;border-radius:4px;background:var(--line);margin-top:14px;overflow:hidden}
+.bar b{display:block;height:100%;width:0;background:var(--grad);border-radius:4px}
+.rest{color:var(--teal)}
+
+/* cards */
+.grid{display:grid;gap:14px;margin-top:30px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:20px}
+.card p{color:var(--muted);margin-top:6px;font-size:.96rem}
+.ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;background:var(--surface2);border:1px solid var(--line);margin-bottom:12px}
+.ico svg{width:24px;height:24px;stroke:var(--lime);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.card:nth-child(even) .ico svg{stroke:var(--teal)}
+
+/* problem */
+.pains{list-style:none;padding:0;margin:28px 0 0;display:grid;gap:10px}
+.pains li{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:12px;padding:14px 16px}
+.punch{margin-top:22px;font-size:1.15rem;font-weight:700}
+
+/* builder */
+#builder{background:linear-gradient(180deg,transparent,rgba(34,211,197,.05) 30%,transparent)}
+.builder{margin-top:30px;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:18px}
+.step{padding:16px 0;border-bottom:1px solid var(--line)}
+.step:first-child{padding-top:2px}
+.step h3{display:flex;align-items:center;gap:10px}
+.step h3 b{width:26px;height:26px;border-radius:50%;background:var(--grad);color:var(--ink);display:grid;place-items:center;font-size:.85rem;flex:none}
+.hint{color:var(--muted);font-size:.86rem;margin-top:4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.chip{min-height:44px;padding:0 15px;border-radius:999px;border:1.5px solid var(--line);background:var(--surface2);font-weight:600;font-size:.92rem;transition:background .12s,border-color .12s,color .12s}
+.chip[aria-pressed="true"]{background:var(--lime);border-color:var(--lime);color:var(--ink)}
+.chip.t[aria-pressed="true"]{background:var(--teal);border-color:var(--teal)}
+.eqgroup{font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:16px}
+.result{margin-top:18px;border-radius:16px;background:var(--bg);border:1px solid var(--line);padding:18px}
+.result .meta{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}
+.result .meta span{font-size:.8rem;font-weight:700;padding:5px 10px;border-radius:8px;background:var(--surface2);color:var(--teal)}
+.blk{margin-top:16px}
+.blk h4{margin:0 0 8px;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--lime)}
+.row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--line);font-size:.95rem}
+.row span:last-child{color:var(--muted);text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.row em{display:block;font-style:normal;font-size:.76rem;color:var(--muted)}
+.prog{margin-top:14px;font-size:.88rem;color:var(--muted);border-left:3px solid var(--lime);padding-left:12px}
+.result .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+
+/* levels */
+.levels{counter-reset:l}
+.lvl{position:relative;overflow:hidden}
+.lvl .tag{font-size:.74rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:var(--grad);padding:4px 10px;border-radius:6px;display:inline-block;margin-bottom:12px}
+.lvl ul{margin:12px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+.lvl li{font-size:.82rem;padding:5px 10px;border-radius:999px;background:var(--surface2);border:1px solid var(--line)}
+
+/* demo player */
+.player{margin-top:30px;display:grid;gap:18px}
+.stage{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:14px;position:relative}
+.stage .pill{position:absolute;top:14px;left:14px;font-size:.72rem;font-weight:700;background:rgba(0,0,0,.5);border:1px solid var(--line);padding:5px 10px;border-radius:999px;color:var(--teal)}
+.cue{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:20px}
+.cue ol{margin:12px 0 0;padding-left:20px;color:var(--muted)}
+.cue li{margin:6px 0}
+.cue .muscles{margin-top:14px;font-size:.88rem}
+.cue .muscles b{color:var(--lime)}
+.note{font-size:.84rem;color:var(--muted);margin-top:14px}
+
+/* progress */
+.chart{width:100%;height:auto;display:block;margin-top:10px}
+.pr{display:flex;align-items:center;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.pr:first-of-type{border-top:0}
+.pr .n{flex:1;font-weight:700}
+.pr .n small{display:block;font-weight:500;color:var(--muted);font-size:.78rem}
+.pr .v{font-variant-numeric:tabular-nums;color:var(--muted);font-size:.9rem;white-space:nowrap}
+.pr .v b{color:var(--lime);font-size:1.05rem}
+.sample{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;font-weight:700}
+
+/* steps */
+.how{counter-reset:s}
+.how .card{padding-left:66px;position:relative}
+.how .card::before{counter-increment:s;content:counter(s);position:absolute;left:18px;top:20px;width:34px;height:34px;border-radius:50%;background:var(--grad);color:var(--ink);font-weight:900;display:grid;place-items:center}
+
+/* science */
+.science{background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:28px 22px;position:relative;overflow:hidden}
+.science::after{content:"";position:absolute;right:-80px;top:-80px;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle,rgba(200,245,60,.18),transparent 70%)}
+
+/* goals */
+.goal h3{font-size:1.2rem}
+.goal .k{font-size:.8rem;color:var(--teal);font-weight:700;margin-top:10px}
+
+/* everyone */
+.both{display:grid;gap:14px;margin-top:26px}
+
+/* faq */
+details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:0 18px;margin-top:10px}
+summary{list-style:none;cursor:pointer;font-weight:700;padding:16px 28px 16px 0;position:relative;min-height:44px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:0;top:12px;font-size:1.5rem;color:var(--lime);font-weight:400}
+details[open] summary::after{content:"–"}
+details p{color:var(--muted);padding-bottom:16px}
+
+/* final cta */
+.final{text-align:center}
+.final .box{background:linear-gradient(160deg,rgba(200,245,60,.12),rgba(34,211,197,.12));border:1px solid var(--line);border-radius:28px;padding:40px 20px}
+form{display:grid;gap:10px;max-width:460px;margin:24px auto 0}
+input[type=email]{min-height:54px;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);color:var(--text);padding:0 20px;font:inherit;width:100%}
+input[type=email]::placeholder{color:#6F837A}
+.msg{min-height:1.4em;font-size:.92rem;margin-top:10px;font-weight:600}
+.msg.ok{color:var(--lime)} .msg.warn{color:#FFC857}
+.tiny{font-size:.82rem;color:var(--muted);margin-top:10px}
+
+footer{border-top:1px solid var(--line);padding:30px 0 110px;color:var(--muted);font-size:.86rem}
+footer .wrap{display:grid;gap:10px}
+
+/* sticky mobile cta */
+.sticky{position:fixed;left:12px;right:12px;bottom:12px;z-index:40;transform:translateY(140%);transition:transform .25s}
+.sticky.show{transform:none}
+.sticky .btn{width:100%;box-shadow:0 10px 40px rgba(0,0,0,.6),0 8px 30px rgba(200,245,60,.25)}
+
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .5s,transform .5s}
+.reveal.in{opacity:1;transform:none}
+
+@media (min-width:720px){
+  section{padding:90px 0}
+  .grid.c2{grid-template-columns:1fr 1fr}
+  .grid.c3{grid-template-columns:repeat(3,1fr)}
+  .pains{grid-template-columns:1fr 1fr}
+  .both{grid-template-columns:1fr 1fr}
+  .builder{padding:28px}
+  form{grid-template-columns:1fr auto}
+  footer{padding-bottom:30px}
+  .sticky{display:none}
+}
+@media (min-width:900px){
+  .hero{padding:80px 0 90px}
+  .hero .wrap{grid-template-columns:1.15fr .85fr;align-items:center}
+  .player{grid-template-columns:1fr 1fr;align-items:stretch}
+  .grid.c5{grid-template-columns:repeat(6,1fr)}
+  .grid.c5>*{grid-column:span 2}
+  .grid.c5>*:nth-child(n+4){grid-column:span 3}
+  .stage{display:grid;place-items:center}
+  .stage .fig{max-height:380px}
+}
+@media (min-width:1000px){
+  .grid.c4{grid-template-columns:repeat(4,1fr)}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .btn,.sticky{transition:none}
+}
+</style>
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="FitAIO početna">Fit<span>AIO</span></a>
+    <a class="btn small" href="#prijava">Rani pristup</a>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">Uskoro na Androidu</span>
+      <h1>Sve što ti treba za trening. <span class="gt">U jednoj aplikaciji.</span></h1>
+      <p class="lead">Praćenje težine, zagrevanje, vežbe, programi, istezanje i napredak — prilagođeni tvom cilju i opremi koju imaš. Bez pet različitih aplikacija i bez nagađanja.</p>
+      <div class="cta">
+        <a class="btn" href="#prijava">Prijavi se za rani pristup</a>
+        <a class="btn ghost" href="#builder">Sastavi probni trening</a>
+      </div>
+      <div class="badges">
+        <span class="badge">Android</span>
+        <span class="badge">Besplatno</span>
+        <span class="badge">Za žene i muškarce</span>
+        <span class="badge">Kod kuće i u teretani</span>
+      </div>
+    </div>
+
+    <div class="phone" aria-hidden="true">
+      <div class="screen">
+        <div class="top"><span>Trening A · Noge</span><span id="hSetLbl">Serija 1/3</span></div>
+        <div class="exname">Čučanj</div>
+        <svg class="fig" id="heroFig" viewBox="20 0 160 185"></svg>
+        <div class="counter">
+          <div>
+            <div class="lbl" id="hLbl">Ponavljanja</div>
+            <div class="big" id="hBig">0<small>/12</small></div>
+          </div>
+          <div>
+            <div class="lbl" style="text-align:right">Serije</div>
+            <div class="setdots" id="hDots"><i class="on"></i><i></i><i></i></div>
+          </div>
+        </div>
+        <div class="bar"><b id="hBar"></b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM -->
+<section>
+  <div class="wrap reveal">
+    <span class="eyebrow">Problem</span>
+    <h2>Zvuči poznato?</h2>
+    <ul class="pains">
+      <li>Jedna aplikacija za težinu, druga za trening, treća za tajmer.</li>
+      <li>Gledaš snimke vežbi, ali ne znaš da li ih radiš kako treba.</li>
+      <li>Svako savetuje drugačije, pa ne znaš kome da veruješ.</li>
+      <li>Kreneš jako, a posle tri nedelje ne znaš šta dalje.</li>
+    </ul>
+    <p class="punch">Nije problem u tebi. Problem je što ti niko nije dao <span class="gt">sve na jednom mestu.</span></p>
+  </div>
+</section>
+
+<!-- BUILDER -->
+<section id="builder">
+  <div class="wrap reveal">
+    <span class="eyebrow">Probaj odmah</span>
+    <h2>Sastavi svoj trening u 4 dodira</h2>
+    <p class="lead">Izaberi cilj, delove tela, opremu i vreme. Ovo je mali deo onoga što FitAIO radi u aplikaciji.</p>
+
+    <div class="builder">
+      <div class="step">
+        <h3><b>1</b>Šta ti je cilj?</h3>
+        <div class="chips" id="cGoal" role="group" aria-label="Cilj"></div>
+        <p class="hint" id="goalHint"></p>
+      </div>
+      <div class="step">
+        <h3><b>2</b>Na šta želiš da staviš akcenat?</h3>
+        <p class="hint">Možeš izabrati više delova tela ili ostaviti „Celo telo".</p>
+        <div class="chips" id="cFocus" role="group" aria-label="Delovi tela"></div>
+      </div>
+      <div class="step">
+        <h3><b>3</b>Šta imaš od opreme?</h3>
+        <p class="hint">Označi sve što imaš. Ako ne označiš ništa, trening je samo sa težinom tela.</p>
+        <div class="eqgroup">Kod kuće</div>
+        <div class="chips" id="cEqHome" role="group" aria-label="Kućna oprema"></div>
+        <div class="eqgroup">U teretani</div>
+        <div class="chips" id="cEqGym" role="group" aria-label="Oprema u teretani"></div>
+      </div>
+      <div class="step" style="border-bottom:0">
+        <h3><b>4</b>Koliko vremena imaš?</h3>
+        <div class="chips" id="cTime" role="group" aria-label="Trajanje"></div>
+        <p class="hint">U aplikaciji FitAIO sam predlaže trajanje treninga, serija i pauza na osnovu cilja, visine, težine i tvojih prethodnih rezultata — a ti uvek možeš ručno da promeniš.</p>
+      </div>
+
+      <div class="result" id="result" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section>
+  <div class="wrap reveal">
+    <span class="eyebrow">AIO = All In One</span>
+    <h2>Jedna aplikacija umesto svih ostalih</h2>
+    <div class="grid c2 c4">
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 3 8-9"/><path d="M15 6h5v5"/></svg></div><h3>Praćenje težine</h3><p>Unesi težinu i gledaj kako se linija pomera. Uskoro i sastav tela (masti, mišići) uz podržane vage i senzore.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="M12 7v7M8 10h8M12 14l-3 6M12 14l3 6"/></svg></div><h3>Prikaz svake vežbe</h3><p>Video izvođenja, slike i kratak opis: kako se radi, koji mišići rade i gde se najčešće greši.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg></div><h3>Brojači i tajmeri</h3><p>Ponavljanja, serije i pauze su već podešeni. Ti samo vežbaš, aplikacija vodi računa o ostalom.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M2 12h3M19 12h3M5 8v8M19 8v8M8 6v12M16 6v12M8 12h8"/></svg></div><h3>Tvoja oprema, tvoj plan</h3><p>Izaberi iz baze kućne i profesionalne opreme šta imaš. Dobijaš samo vežbe koje zaista možeš da uradiš.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3c2 3 5 5 5 9a5 5 0 01-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3 0-5 1-8z"/></svg></div><h3>Zagrevanje</h3><p>Kratke, proverene rutine u vojničkom stilu koje pripremaju telo baš za trening koji sledi.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2"/><path d="M6 8v5l6 2 6-6M12 15l-2 6"/></svg></div><h3>Istezanje</h3><p>Vođeno istezanje posle treninga, prilagođeno mišićima koji su tog dana radili.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 20h4v-6H4zM10 20h4V9h-4zM16 20h4V4h-4z"/></svg></div><h3>Progresivno opterećenje</h3><p>Svaki trening je malo zahtevniji od prethodnog — taman toliko da napreduješ bez preterivanja.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="17" rx="2"/><path d="M8 2v4M16 2v4M4 10h16M8 14l2.5 2.5L16 12"/></svg></div><h3>Plan na duže staze</h3><p>Ne samo današnji trening, nego plan za naredne nedelje i mesece, vezan za tvoj cilj.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- LEVELS -->
+<section>
+  <div class="wrap reveal">
+    <span class="eyebrow">Tri nivoa vežbi</span>
+    <h2>Od prvog skleka do naprednih pokreta</h2>
+    <div class="grid c3 levels">
+      <div class="card lvl">
+        <span class="tag">Osnovne vežbe</span>
+        <h3>Temelj svega</h3>
+        <p>Posebni programi za vežbe koje svi znaju, a malo ko ih radi planski. Kreću od tvog trenutnog broja.</p>
+        <ul><li>Sklekovi</li><li>Čučnjevi</li><li>Trbušnjaci</li><li>Zgibovi</li><li>Burpees</li><li>Plank</li></ul>
+      </div>
+      <div class="card lvl">
+        <span class="tag">Vežbe po programima</span>
+        <h3>Plan za tvoj cilj</h3>
+        <p>Kompletni programi složeni prema cilju, opremi i delovima tela na koje želiš da staviš akcenat.</p>
+        <ul><li>Celo telo</li><li>Gornji / donji deo</li><li>Kod kuće</li><li>Teretana</li><li>Kružni trening</li></ul>
+      </div>
+      <div class="card lvl">
+        <span class="tag">Napredne vežbe</span>
+        <h3>Kad dođe vreme</h3>
+        <p>Zahtevniji pokreti i teže varijante, koje aplikacija uvodi postepeno, kada rezultati pokažu da je telo spremno.</p>
+        <ul><li>Pistol čučanj</li><li>Zgib sa opterećenjem</li><li>Sklek na jednoj ruci</li><li>Mrtvo dizanje</li><li>Muscle-up</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO DEMO -->
+<section>
+  <div class="wrap reveal">
+    <span class="eyebrow">Kako se vežba pravilno radi</span>
+    <h2>Vidiš pokret pre nego što ga uradiš</h2>
+    <p class="lead">Svaka vežba ima jasan prikaz izvođenja, ključne tačke na koje treba paziti i mišiće koji rade.</p>
+    <div class="chips" id="cDemo" role="group" aria-label="Izaberi vežbu" style="margin-top:22px"></div>
+    <div class="player">
+      <div class="stage">
+        <span class="pill">AI silueta · ilustracija</span>
+        <svg class="fig" id="demoFig" viewBox="20 0 160 185" role="img" aria-label="Animirana silueta koja izvodi vežbu"></svg>
+      </div>
+      <div class="cue">
+        <h3 id="dName"></h3>
+        <ol id="dCues"></ol>
+        <p class="muscles"><b>Mišići:</b> <span id="dMus"></span></p>
+        <p class="note">U aplikaciji vežbe prikazuje AI silueta u video formi. Snimke sa pravim trenerima dodajemo naknadno.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRESS -->
+<section>
+  <div class="wrap reveal">
+    <span class="eyebrow">Praćenje napretka</span>
+    <h2>Vidiš napredak — ukupno i po svakoj vežbi</h2>
+    <div class="grid c2">
+      <div class="card">
+        <span class="sample">Primer prikaza</span>
+        <h3 style="margin-top:6px">Opšti napredak</h3>
+        <p>Težina, broj treninga, ukupno vreme vežbanja i niz bez preskakanja.</p>
+        <svg class="chart" viewBox="0 0 320 130" role="img" aria-label="Primer grafikona težine koja opada tokom 12 nedelja">
+          <defs><linearGradient id="cg" x1="0" x2="1"><stop offset="0" stop-color="#C8F53C"/><stop offset="1" stop-color="#22D3C5"/></linearGradient>
+          <linearGradient id="ca" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22D3C5" stop-opacity=".25"/><stop offset="1" stop-color="#22D3C5" stop-opacity="0"/></linearGradient></defs>
+          <g stroke="#24332D" stroke-width="1"><path d="M0 30h320M0 65h320M0 100h320"/></g>
+          <path d="M8 28 L36 34 L64 31 L92 44 L120 50 L148 47 L176 62 L204 70 L232 68 L260 82 L288 90 L312 96 L312 125 L8 125Z" fill="url(#ca)"/>
+          <path d="M8 28 L36 34 L64 31 L92 44 L120 50 L148 47 L176 62 L204 70 L232 68 L260 82 L288 90 L312 96" fill="none" stroke="url(#cg)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="312" cy="96" r="5" fill="#22D3C5"/>
+        </svg>
+      </div>
+      <div class="card">
+        <span class="sample">Primer prikaza</span>
+        <h3 style="margin-top:6px">Napredak po vežbi</h3>
+        <p style="margin-bottom:8px">Za svaku vežbu vidiš odakle je krenulo i dokle je stiglo.</p>
+        <div class="pr"><div class="n">Sklekovi<small>najviše u seriji</small></div><div class="v">12 → <b>28</b></div></div>
+        <div class="pr"><div class="n">Čučanj sa šipkom<small>radna težina</small></div><div class="v">40 → <b>65 kg</b></div></div>
+        <div class="pr"><div class="n">Zgibovi<small>najviše u seriji</small></div><div class="v">2 → <b>9</b></div></div>
+        <div class="pr"><div class="n">Plank<small>najduže držanje</small></div><div class="v">0:45 → <b>2:10</b></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section>
+  <div class="wrap reveal">
+    <span class="eyebrow">Kako radi</span>
+    <h2>Tri koraka do plana</h2>
+    <div class="grid c3 how">
+      <div class="card"><h3>Reci nam cilj i opremu</h3><p>Dva minuta, bez komplikovanih upitnika.</p></div>
+      <div class="card"><h3>Dobij plan za naredne nedelje</h3><p>Zagrevanje, trening i istezanje za svaki dan.</p></div>
+      <div class="card"><h3>Vežbaj i prati napredak</h3><p>Aplikacija broji, meri i postepeno podiže lestvicu.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCIENCE -->
+<section>
+  <div class="wrap reveal">
+    <div class="science">
+      <span class="eyebrow">Zasnovano na nauci</span>
+      <h2>Bez mitova iz teretane</h2>
+      <p class="lead">Broj serija i ponavljanja, dužina pauza, zagrevanje i istezanje u aplikaciji oslanjaju se na objavljena naučna istraživanja i preporuke stručnih organizacija — ne na trendove sa društvenih mreža. Plan se prilagođava tome kako ti zaista ide.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GOALS -->
+<section>
+  <div class="wrap reveal">
+    <span class="eyebrow">Ciljevi</span>
+    <h2>Koji je tvoj cilj?</h2>
+    <p class="lead">Od cilja zavisi sve: izbor vežbi, broj ponavljanja, pauze i tempo napredovanja.</p>
+    <div class="grid c2 c5">
+      <div class="card goal"><h3>Mršavljenje</h3><p>Manje masti, uz očuvanje mišića. Kombinacija vežbi snage i kraćih pauza.</p><div class="k">Više ponavljanja · kraće pauze</div></div>
+      <div class="card goal"><h3>Rast mišića</h3><p>Veći obim i masa. Više serija po mišićnoj grupi i postepeno veća težina.</p><div class="k">8–12 ponavljanja · više serija</div></div>
+      <div class="card goal"><h3>Oblikovanje i zatezanje</h3><p>„Zategnut" izgled nije poseban trening: to je malo više mišića i malo manje masti u isto vreme.</p><div class="k">Snaga + kondicija zajedno</div></div>
+      <div class="card goal"><h3>Snaga</h3><p>Da podigneš više. Teže varijante, manje ponavljanja i duže pauze.</p><div class="k">Manje ponavljanja · duže pauze</div></div>
+      <div class="card goal"><h3>Kondicija i izdržljivost</h3><p>Da izdržiš duže bez zadihanosti i umora. Kružni i intervalni treninzi.</p><div class="k">Intervali · kratke pauze</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EVERYONE -->
+<section>
+  <div class="wrap reveal">
+    <span class="eyebrow">Za koga je</span>
+    <h2>Za nju i za njega. Za početak i za nastavak.</h2>
+    <div class="both">
+      <div class="card"><h3>Isti kvalitet, tvoj plan</h3><p>FitAIO ne deli vežbe na „muške" i „ženske". Plan se pravi prema tvom cilju, telu, opremi i delovima tela na koje želiš da staviš akcenat.</p></div>
+      <div class="card"><h3>Ne moraš da budeš profi</h3><p>Aplikacija je za ljude koji žele da izgledaju i osećaju se bolje, a ne za takmičare. Kreće od tvog trenutnog nivoa.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="wrap reveal" style="max-width:760px">
+    <span class="eyebrow">Česta pitanja</span>
+    <h2>Kratko i jasno</h2>
+    <div style="margin-top:24px">
+      <details><summary>Da li je za početnike?</summary><p>Da. Plan kreće od tvog trenutnog nivoa i napreduje postepeno.</p></details>
+      <details><summary>Da li je i za žene i za muškarce?</summary><p>Da. Plan se pravi prema cilju i telu, a delove tela na koje želiš akcenat biraš samostalno.</p></details>
+      <details><summary>Moram li da idem u teretanu?</summary><p>Ne. FitAIO radi bez opreme, sa kućnom opremom i u teretani. Ti označiš šta imaš.</p></details>
+      <details><summary>Koliko vremena mi treba?</summary><p>Od 20 minuta po treningu. Aplikacija predlaže trajanje, a ti ga možeš promeniti.</p></details>
+      <details><summary>Da li je besplatna?</summary><p>Da, sve navedene funkcionalnosti su besplatne. Kasnije planiramo PRO nivo sa dodatnim mogućnostima i planove ishrane.</p></details>
+      <details><summary>Kada izlazi?</summary><p>Uskoro, prvo na Androidu. Prijavi se za rani pristup i javićemo ti čim bude spremna.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final" id="prijava">
+  <div class="wrap reveal">
+    <div class="box">
+      <h2>Prestani da skupljaš aplikacije.<br><span class="gt">Počni da treniraš.</span></h2>
+      <p class="lead" style="margin-left:auto;margin-right:auto">Ostavi email i javićemo ti kad FitAIO bude spreman za preuzimanje.</p>
+      <form id="wl" novalidate>
+        <label for="em" style="position:absolute;left:-9999px">Email adresa</label>
+        <input id="em" type="email" name="email" placeholder="tvoj@email.com" autocomplete="email" required>
+        <button class="btn" type="submit">Javi mi kad izađe</button>
+      </form>
+      <div class="msg" id="wlMsg" role="status"></div>
+      <p class="tiny">Prijavom pristaješ da ti na ovu adresu javimo kad FitAIO izađe. Bez spama, a odjaviti se možeš u svakom trenutku. <a href="privatnost.html">Politika privatnosti</a></p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="logo">Fit<span>AIO</span></div>
+    <div>Kontakt: uskoro · <a href="privatnost.html">Politika privatnosti</a></div>
+    <div>Ako imaš zdravstvenih problema ili povreda, posavetuj se sa lekarom pre početka vežbanja.</div>
+    <div>© 2026 FitAIO</div>
+  </div>
+</footer>
+
+<div class="sticky" id="sticky"><a class="btn" href="#prijava">Prijavi se za rani pristup</a></div>
+
+<script>
+(function(){
+"use strict";
+
+/* ===== PODEŠAVANJE LISTE ČEKANJA =====
+   Prijave idu u Supabase tabelu "waitlist" (vidi supabase-waitlist.sql).
+   Upiši Project URL i javni (anon / publishable) ključ iz Supabase > Project Settings > API.
+   NIKAD ne upisuj service_role / secret ključ ovde — ova stranica je javna.
+   Dok su polja prazna, prijave se NE čuvaju i posetilac dobija poruku o tome. */
+var SUPABASE_URL = "https://iwzzirqfsdzopyyecmvg.supabase.co";        // npr. https://abcdefgh.supabase.co
+var SUPABASE_ANON_KEY = "sb_publishable_ZV2PDwB0ew1yIxL1pKfPdA_ngRt0Xp4";   // javni anon / publishable ključ
+var WAITLIST_ENDPOINT = SUPABASE_URL && SUPABASE_ANON_KEY ? SUPABASE_URL.replace(/\/+$/,"") + "/rest/v1/waitlist" : "";
+
+var $ = function(id){ return document.getElementById(id); };
+var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- SILUETA ---------- */
+var NS = "http://www.w3.org/2000/svg";
+function lerp(a,b,t){ return a+(b-a)*t; }
+function rad(d){ return d*Math.PI/180; }
+function ik(p1,p2,l1,l2,pref){
+  var dx=p2[0]-p1[0], dy=p2[1]-p1[1], d=Math.min(Math.hypot(dx,dy), l1+l2-0.01);
+  var a=(l1*l1-l2*l2+d*d)/(2*d), h=Math.sqrt(Math.max(0,l1*l1-a*a));
+  var ux=dx/Math.hypot(dx,dy), uy=dy/Math.hypot(dx,dy);
+  var mx=p1[0]+a*ux, my=p1[1]+a*uy;
+  var c1=[mx-uy*h,my+ux*h], c2=[mx+uy*h,my-ux*h];
+  var s1=(c1[0]-mx)*pref[0]+(c1[1]-my)*pref[1], s2=(c2[0]-mx)*pref[0]+(c2[1]-my)*pref[1];
+  return s1>s2?c1:c2;
+}
+var POSES = {
+  squat:function(p){
+    var A=[104,170], H=[lerp(100,80,p),lerp(88,128,p)], K=ik(H,A,42,42,[1,0]);
+    var a=rad(lerp(4,38,p)), S=[H[0]+46*Math.sin(a),H[1]-46*Math.cos(a)];
+    var hd=[S[0]+16*Math.sin(a*.8),S[1]-16*Math.cos(a*.8)];
+    var b=rad(lerp(85,5,p)), hand=[S[0]+38*Math.cos(b),S[1]+38*Math.sin(b)];
+    return {segs:[[H,K,11],[K,A,10],[[98,172],[124,172],8],[H,S,15],[S,hand,8]],head:hd};
+  },
+  pushup:function(p){
+    var T=[38,168], th=rad(lerp(25,7,p)), u=[Math.cos(th),-Math.sin(th)];
+    var Hp=[T[0]+58*u[0],T[1]+58*u[1]], S=[T[0]+108*u[0],T[1]+108*u[1]], hand=[140,170];
+    var E=ik(S,hand,25,25,[-1,-.2]);
+    var hd=[S[0]+17*Math.cos(th+.15),S[1]-17*Math.sin(th+.15)];
+    return {segs:[[T,Hp,11],[Hp,S,15],[S,E,8],[E,hand,8]],head:hd};
+  },
+  crunch:function(p){
+    var H=[112,164], K=[142,132], F=[166,168], ph=rad(lerp(4,42,p));
+    var S=[H[0]-50*Math.cos(ph),H[1]-50*Math.sin(ph)];
+    var hd=[S[0]-16*Math.cos(ph+.2),S[1]-16*Math.sin(ph+.2)];
+    var dx=K[0]-S[0], dy=K[1]-S[1], d=Math.hypot(dx,dy);
+    var hand=[S[0]+36*dx/d,S[1]+36*dy/d];
+    return {segs:[[H,K,11],[K,F,10],[H,S,15],[S,hand,8]],head:hd};
+  }
+};
+function makeFig(svg){
+  svg.innerHTML='<defs><linearGradient id="fg" gradientUnits="userSpaceOnUse" x1="40" y1="20" x2="160" y2="180"><stop offset="0" stop-color="#C8F53C"/><stop offset="1" stop-color="#22D3C5"/></linearGradient></defs><line class="ground" x1="24" y1="178" x2="176" y2="178"/>';
+  var lines=[], i;
+  for(i=0;i<5;i++){ var l=document.createElementNS(NS,"line"); svg.appendChild(l); lines.push(l); }
+  var head=document.createElementNS(NS,"circle"); head.setAttribute("class","h"); head.setAttribute("r",9.5); svg.appendChild(head);
+  return function(pose){
+    for(var j=0;j<lines.length;j++){
+      var s=pose.segs[j], l=lines[j];
+      if(!s){ l.style.display="none"; continue; }
+      l.style.display="";
+      l.setAttribute("x1",s[0][0].toFixed(1)); l.setAttribute("y1",s[0][1].toFixed(1));
+      l.setAttribute("x2",s[1][0].toFixed(1)); l.setAttribute("y2",s[1][1].toFixed(1));
+      l.setAttribute("stroke-width",s[2]);
+    }
+    head.setAttribute("cx",pose.head[0].toFixed(1)); head.setAttribute("cy",pose.head[1].toFixed(1));
+  };
+}
+var drawHero = makeFig($("heroFig")), drawDemo = makeFig($("demoFig"));
+
+/* hero: brojač + pauza */
+var REP_MS=2400, REPS=12, SETS=3, REST_S=6;
+var hero={rep:0,set:1,mode:"work",t0:0};
+function heroUI(restLeft){
+  $("hSetLbl").textContent="Serija "+hero.set+"/"+SETS;
+  var dots=$("hDots").children;
+  for(var i=0;i<dots.length;i++) dots[i].className = i<hero.set ? "on" : "";
+  if(hero.mode==="work"){
+    $("hLbl").textContent="Ponavljanja"; $("hLbl").className="lbl";
+    $("hBig").innerHTML=hero.rep+"<small>/"+REPS+"</small>";
+    $("hBar").style.width=(hero.rep/REPS*100)+"%";
+  } else {
+    $("hLbl").textContent="Pauza"; $("hLbl").className="lbl rest";
+    $("hBig").innerHTML="0:"+String(restLeft).padStart(2,"0");
+    $("hBar").style.width=(restLeft/REST_S*100)+"%";
+  }
+}
+
+/* demo vežbe */
+var DEMOS=[
+  {id:"squat",name:"Čučanj",cues:["Stopala u širini ramena, prsti blago ka spolja.","Spuštaj kukove nazad i dole, kolena prate pravac prstiju.","Leđa ravna, pogled napred. Ustani guranjem kroz pete."],mus:"butine, zadnjica, trup"},
+  {id:"pushup",name:"Sklek",cues:["Dlanovi ispod ramena, telo u jednoj liniji.","Spuštaj grudi ka podu, laktovi pod uglom od oko 45°.","Ne dozvoli da kukovi propadnu. Izguraj do opruženih ruku."],mus:"grudi, ramena, triceps, trup"},
+  {id:"crunch",name:"Trbušnjak",cues:["Lezi na leđa, kolena savijena, stopala na podu.","Podiži lopatice od poda stezanjem stomaka, bez trzanja vrata.","Spuštaj se polako i kontrolisano."],mus:"prednji trbušni mišići"}
+];
+var demo=DEMOS[0];
+function setDemo(d){
+  demo=d; $("dName").textContent=d.name; $("dMus").textContent=d.mus;
+  $("dCues").innerHTML=d.cues.map(function(c){return "<li>"+c+"</li>";}).join("");
+  Array.prototype.forEach.call($("cDemo").children,function(b){ b.setAttribute("aria-pressed", b.dataset.id===d.id); });
+  if(reduce) drawDemo(POSES[d.id](.6));
+}
+DEMOS.forEach(function(d){
+  var b=document.createElement("button"); b.className="chip t"; b.type="button"; b.textContent=d.name; b.dataset.id=d.id;
+  b.onclick=function(){ setDemo(d); }; $("cDemo").appendChild(b);
+});
+setDemo(demo);
+
+function frame(now){
+  if(!hero.t0) hero.t0=now;
+  var el=now-hero.t0;
+  if(hero.mode==="work"){
+    var ph=(el%REP_MS)/REP_MS, done=Math.floor(el/REP_MS);
+    if(done!==hero.rep){ hero.rep=done; if(hero.rep>=REPS){ hero.rep=REPS; heroUI(); hero.mode="rest"; hero.t0=now; hero.last=-1; } else heroUI(); }
+    if(hero.mode==="work") drawHero(POSES.squat(.5-.5*Math.cos(ph*2*Math.PI)));
+  } else {
+    drawHero(POSES.squat(0));
+    var left=REST_S-Math.floor(el/1000);
+    if(left<=0){ hero.mode="work"; hero.rep=0; hero.set=hero.set%SETS+1; hero.t0=now; heroUI(); }
+    else if(left!==hero.last){ hero.last=left; heroUI(left); }
+  }
+  var dp=(now%2600)/2600;
+  drawDemo(POSES[demo.id](.5-.5*Math.cos(dp*2*Math.PI)));
+  requestAnimationFrame(frame);
+}
+if(reduce){ drawHero(POSES.squat(.6)); hero.rep=8; heroUI(); }
+else { heroUI(); requestAnimationFrame(frame); }
+
+/* ---------- SASTAVLJAČ TRENINGA ---------- */
+var GOALS=[
+  {id:"fat",n:"Mršavljenje",hint:"Manje masti uz očuvanje mišića.",auto:45,rx:"3 × 12–15",rest:"45 s",cardio:1},
+  {id:"mus",n:"Rast mišića",hint:"Veći obim i masa mišića.",auto:60,rx:"4 × 8–12",rest:"90 s",cardio:0},
+  {id:"tone",n:"Oblikovanje i zatezanje",hint:"Malo više mišića i malo manje masti u isto vreme.",auto:45,rx:"3 × 10–15",rest:"60 s",cardio:.5},
+  {id:"str",n:"Snaga",hint:"Da podigneš više: teže varijante, duže pauze.",auto:60,rx:"4 × 4–6",rest:"2–3 min",cardio:0},
+  {id:"end",n:"Kondicija i izdržljivost",hint:"Da izdržiš duže bez zadihanosti i umora.",auto:30,rx:"3 × 15–20",rest:"30 s",cardio:1.5}
+];
+var FOCUS=[["all","Celo telo"],["grudi","Grudi"],["ledja","Leđa"],["ramena","Ramena"],["ruke","Ruke"],["stomak","Stomak"],["zadnjica","Zadnjica"],["noge","Noge"]];
+var EQ_HOME=[["bucice","Bučice"],["girja","Girja (kettlebell)"],["trake","Elastične trake"],["vratilo","Vratilo za zgibove"],["vijaca","Vijača"],["trx","TRX trake"],["tocak","Točak za trbušnjake"],["klupa","Klupa"]];
+var EQ_GYM=[["sipka","Olimpijska šipka i tegovi"],["rek","Rek za čučanj"],["benc","Bench klupa"],["smit","Smit mašina"],["lat","Lat mašina"],["kabl","Kablovi (sajle)"],["presa","Nožna presa"],["masine","Mašine za noge"],["razboj","Razboj"],["traka","Traka za trčanje"],["bicikl","Sobni bicikl"],["veslac","Veslački trenažer"]];
+var TIMES=[["auto","Neka FitAIO predloži"],[20,"20 min"],[30,"30 min"],[45,"45 min"],[60,"60 min"]];
+/* n: naziv, m: grupa, e: oprema (bilo koja od navedenih; prazno = težina tela), k: t=na vreme, c=kardio */
+var EX=[
+ {n:"Sklekovi",m:"grudi",e:[]},{n:"Uski sklekovi",m:"ruke",e:[]},{n:"Pike sklekovi",m:"ramena",e:[]},
+ {n:"Čučnjevi",m:"noge",e:[]},{n:"Iskoraci",m:"noge",e:[]},{n:"Most za zadnjicu",m:"zadnjica",e:[]},
+ {n:"Bugarski čučanj uz stolicu",m:"zadnjica",e:[]},{n:"Trbušnjaci",m:"stomak",e:[]},{n:"Plank",m:"stomak",e:[],k:"t"},
+ {n:"Podizanje nogu ležeći",m:"stomak",e:[]},{n:"Supermen",m:"ledja",e:[]},{n:"Propadanja na stolici",m:"ruke",e:[]},
+ {n:"Burpees",m:"celo",e:[],k:"c"},{n:"Planinar (mountain climbers)",m:"celo",e:[],k:"c"},{n:"Skokovi raznožno",m:"celo",e:[],k:"c"},
+ {n:"Potisak bučicama",m:"grudi",e:["bucice"]},{n:"Veslanje bučicom u pretklonu",m:"ledja",e:["bucice"]},
+ {n:"Potisak bučicama iznad glave",m:"ramena",e:["bucice"]},{n:"Odručenja bučicama",m:"ramena",e:["bucice"]},
+ {n:"Biceps pregib",m:"ruke",e:["bucice","trake"]},{n:"Triceps ekstenzija",m:"ruke",e:["bucice"]},
+ {n:"Goblet čučanj",m:"noge",e:["bucice","girja"]},{n:"Rumunsko mrtvo dizanje",m:"zadnjica",e:["bucice","sipka"]},
+ {n:"Zamah girjom",m:"zadnjica",e:["girja"]},{n:"Veslanje trakom",m:"ledja",e:["trake"]},
+ {n:"Razvlačenje trake",m:"ramena",e:["trake"]},{n:"Bočni hod sa trakom",m:"zadnjica",e:["trake"]},
+ {n:"Zgibovi",m:"ledja",e:["vratilo"]},{n:"Podizanje kolena u visu",m:"stomak",e:["vratilo"]},
+ {n:"Preskakanje vijače",m:"celo",e:["vijaca"],k:"c"},{n:"TRX veslanje",m:"ledja",e:["trx"]},
+ {n:"Točak za trbušnjake",m:"stomak",e:["tocak"]},{n:"Step-up na klupu",m:"noge",e:["klupa"]},
+ {n:"Bench press",m:"grudi",e:["benc"]},{n:"Čučanj sa šipkom",m:"noge",e:["rek","smit"]},
+ {n:"Mrtvo dizanje",m:"ledja",e:["sipka"]},{n:"Veslanje šipkom u pretklonu",m:"ledja",e:["sipka"]},
+ {n:"Potisak šipkom iznad glave",m:"ramena",e:["sipka"]},{n:"Hip thrust sa šipkom",m:"zadnjica",e:["sipka"]},
+ {n:"Lat povlačenje",m:"ledja",e:["lat"]},{n:"Veslanje na sajli",m:"ledja",e:["kabl"]},
+ {n:"Triceps potisak na sajli",m:"ruke",e:["kabl"]},{n:"Krosover na sajlama",m:"grudi",e:["kabl"]},
+ {n:"Nožna presa",m:"noge",e:["presa"]},{n:"Nožna ekstenzija i pregib",m:"noge",e:["masine"]},
+ {n:"Propadanja na razboju",m:"grudi",e:["razboj"]},
+ {n:"Intervali na traci",m:"celo",e:["traka"],k:"c"},{n:"Intervali na biciklu",m:"celo",e:["bicikl"],k:"c"},{n:"Veslački trenažer",m:"celo",e:["veslac"],k:"c"}
+];
+var STRETCH={noge:"Istezanje zadnje lože",zadnjica:"Golub poza",grudi:"Istezanje grudi uz dovratak",ledja:"Dečja poza",ramena:"Rame preko grudi",ruke:"Istezanje tricepsa",stomak:"Kobra",celo:"Pretklon u stojećem stavu"};
+var EQNAME={}; EQ_HOME.concat(EQ_GYM).forEach(function(e){EQNAME[e[0]]=e[1];});
+
+var st={goal:"fat",focus:new Set(["all"]),eq:new Set(),time:"auto",seed:1};
+function chip(parent,label,cls,on,fn){
+  var b=document.createElement("button"); b.type="button"; b.className="chip"+(cls?" "+cls:""); b.textContent=label;
+  b.setAttribute("aria-pressed",on); b.onclick=function(){ fn(b); }; parent.appendChild(b); return b;
+}
+function single(parentId,items,key,cls){
+  var p=$(parentId);
+  items.forEach(function(it){
+    var id=it.id!==undefined?it.id:it[0], lbl=it.n||it[1];
+    chip(p,lbl,cls,st[key]===id,function(b){
+      st[key]=id; Array.prototype.forEach.call(p.children,function(c){c.setAttribute("aria-pressed",c===b);}); build();
+    });
+  });
+}
+single("cGoal",GOALS,"goal");
+single("cTime",TIMES,"time","t");
+(function(){
+  var p=$("cFocus");
+  FOCUS.forEach(function(f){
+    chip(p,f[1],"t",st.focus.has(f[0]),function(){
+      if(f[0]==="all"){ st.focus=new Set(["all"]); }
+      else { st.focus.delete("all"); st.focus.has(f[0])?st.focus.delete(f[0]):st.focus.add(f[0]); if(!st.focus.size) st.focus.add("all"); }
+      Array.prototype.forEach.call(p.children,function(c,i){c.setAttribute("aria-pressed",st.focus.has(FOCUS[i][0]));}); build();
+    });
+  });
+  [["cEqHome",EQ_HOME],["cEqGym",EQ_GYM]].forEach(function(g){
+    g[1].forEach(function(e){
+      chip($(g[0]),e[1],"",false,function(b){
+        st.eq.has(e[0])?st.eq.delete(e[0]):st.eq.add(e[0]); b.setAttribute("aria-pressed",st.eq.has(e[0])); build();
+      });
+    });
+  });
+})();
+
+function rnd(i){ var x=Math.sin(i*12.9898+st.seed*78.233)*43758.5453; return x-Math.floor(x); }
+function build(){
+  var g=GOALS.filter(function(x){return x.id===st.goal;})[0];
+  $("goalHint").textContent=g.hint;
+  var mins=st.time==="auto"?g.auto:st.time;
+  var count=mins<=20?4:mins<=30?5:mins<=45?6:8;
+  var all=st.focus.has("all"), foc=Array.from(st.focus);
+  var pool=EX.map(function(x,i){
+    var uses=x.e.filter(function(e){return st.eq.has(e);});
+    if(x.e.length && !uses.length) return null;
+    var s=rnd(i)*1.2 + (uses.length?2:0);
+    if(x.k==="c") s+= g.cardio*2 - 1;
+    return {x:x,s:s,eq:uses[0]};
+  }).filter(Boolean);
+  var base = g.cardio>=1 ? ["celo","noge","grudi","ledja","celo","stomak","zadnjica","ramena","ruke"] : ["noge","grudi","ledja","zadnjica","ramena","stomak","ruke","celo"];
+  var picked=[], used=new Set(), bi=0;
+  function take(grp){
+    var c=pool.filter(function(p){return !used.has(p.x.n) && (!grp||p.x.m===grp);}).sort(function(a,b){return b.s-a.s;})[0];
+    if(c){ used.add(c.x.n); picked.push(c); } return !!c;
+  }
+  for(var i=0;i<count;i++){
+    var grp = (!all && i%4!==3) ? foc[i%foc.length] : base[bi++ % base.length];
+    if(!take(grp)) take(null);
+  }
+  function rx(p){
+    if(p.x.k==="t") return "3 × 30–45 s";
+    if(p.x.k==="c") return g.cardio>=1 ? "4 × 40 s rada / 20 s odmora" : "3 × 30 s";
+    if(g.id==="str" && !p.x.e.length) return "4 × 6–10";
+    return g.rx;
+  }
+  var groups=[]; picked.forEach(function(p){ if(groups.indexOf(p.x.m)<0) groups.push(p.x.m); });
+  var eqTxt = st.eq.size ? ("Oprema: "+st.eq.size) : "Bez opreme";
+  var h='<h3>Tvoj probni trening</h3><div class="meta"><span>'+g.n+'</span><span>'+mins+' min'+(st.time==="auto"?' · predlog':'')+'</span><span>'+eqTxt+'</span><span>Pauza '+g.rest+'</span></div>';
+  h+='<div class="blk"><h4>Zagrevanje · 5 min</h4>'+
+     '<div class="row"><span>Kruženje zglobova i ramena</span><span>1 min</span></div>'+
+     '<div class="row"><span>Visoka kolena u mestu</span><span>2 × 30 s</span></div>'+
+     '<div class="row"><span>Iskoraci sa rotacijom trupa</span><span>2 × 8</span></div></div>';
+  h+='<div class="blk"><h4>Glavni deo</h4>'+picked.map(function(p){
+       var sub = p.x.e.length ? EQNAME[p.eq] : (g.id==="str"?"težina tela · teža varijanta":"težina tela");
+       return '<div class="row"><span>'+p.x.n+'<em>'+sub+'</em></span><span>'+rx(p)+'</span></div>';
+     }).join("")+'</div>';
+  h+='<div class="blk"><h4>Istezanje · 5 min</h4>'+groups.slice(0,3).map(function(m){
+       return '<div class="row"><span>'+STRETCH[m]+'</span><span>2 × 30 s</span></div>';
+     }).join("")+'</div>';
+  h+='<p class="prog"><b style="color:var(--text)">Sledeći put malo teže:</b> kad uradiš sva ponavljanja u svim serijama, aplikacija dodaje ponavljanje, težinu ili težu varijantu vežbe.</p>';
+  h+='<div class="actions"><a class="btn" href="#prijava">Želim ceo plan u aplikaciji</a><button class="btn ghost" type="button" id="shuf">Druga kombinacija</button></div>';
+  $("result").innerHTML=h;
+  $("shuf").onclick=function(){ st.seed++; build(); };
+}
+build();
+
+/* ---------- LISTA ČEKANJA ---------- */
+$("wl").addEventListener("submit",function(e){
+  e.preventDefault();
+  var em=$("em").value.trim(), m=$("wlMsg");
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)){ m.className="msg warn"; m.textContent="Unesi ispravnu email adresu."; $("em").focus(); return; }
+  if(!WAITLIST_ENDPOINT){ m.className="msg warn"; m.textContent="Lista čekanja se uskoro otvara — prijava još nije sačuvana. Navrati ponovo za koji dan."; return; }
+  m.className="msg"; m.textContent="Šaljem…";
+  fetch(WAITLIST_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json","apikey":SUPABASE_ANON_KEY,"Authorization":"Bearer "+SUPABASE_ANON_KEY,"Prefer":"return=minimal"},body:JSON.stringify({email:em.toLowerCase()})})
+    .then(function(r){ if(!r.ok && r.status!==409) throw 0; /* 409 = email je već na listi */ m.className="msg ok"; m.textContent="Hvala! Javićemo ti čim FitAIO bude spreman."; $("wl").reset(); })
+    .catch(function(){ m.className="msg warn"; m.textContent="Nešto nije u redu. Pokušaj ponovo malo kasnije."; });
+});
+
+/* ---------- SITNICE ---------- */
+if("IntersectionObserver" in window){
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }); },{threshold:.08});
+  document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
+  var heroOut=false, finalIn=false, sticky=$("sticky");
+  function upd(){ sticky.classList.toggle("show",heroOut&&!finalIn); }
+  new IntersectionObserver(function(es){ heroOut=!es[0].isIntersecting; upd(); }).observe(document.querySelector(".hero .cta"));
+  new IntersectionObserver(function(es){ finalIn=es[0].isIntersecting; upd(); },{threshold:.2}).observe($("prijava"));
+} else {
+  document.querySelectorAll(".reveal").forEach(function(el){ el.classList.add("in"); });
+}
+})();
+</script>
+</body>
+</html>
