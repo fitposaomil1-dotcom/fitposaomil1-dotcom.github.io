@@ -75,9 +75,12 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;heigh
 .screen .top{display:flex;justify-content:space-between;font-size:.74rem;color:var(--muted);font-weight:600}
 .screen .exname{font-weight:800;font-size:1.15rem;margin-top:10px}
 .fig{display:block;width:100%;height:auto}
-.fig line,.fig circle.h{stroke:url(#fg);fill:none;stroke-linecap:round}
-.fig circle.h{fill:url(#fg);stroke:none}
-.fig .ground{stroke:#2B3B35;stroke-width:2}
+.fig path{stroke-linejoin:round;stroke-linecap:round}
+.fig .ground{stroke:#2B3B35;stroke-width:1.5}
+#demoFig{aspect-ratio:1/1.05}
+.sexpick{position:absolute;top:12px;right:12px;display:flex;gap:6px}
+.sexpick button{font:inherit;font-size:.72rem;font-weight:700;padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:rgba(0,0,0,.5);color:var(--muted);cursor:pointer}
+.sexpick button[aria-pressed="true"]{color:#0A0F0D;background:var(--teal);border-color:var(--teal)}
 .counter{display:flex;align-items:flex-end;justify-content:space-between;margin-top:4px}
 .counter .big{font-size:2.6rem;font-weight:900;line-height:1;font-variant-numeric:tabular-nums}
 .counter .big small{font-size:1.1rem;color:var(--muted);font-weight:700}
@@ -218,7 +221,7 @@ footer .wrap{display:grid;gap:10px}
   .grid.c5>*{grid-column:span 2}
   .grid.c5>*:nth-child(n+4){grid-column:span 3}
   .stage{display:grid;place-items:center}
-  .stage .fig{max-height:380px}
+  .stage .fig{max-height:380px;width:auto;max-width:100%}
 }
 @media (min-width:1000px){
   .grid.c4{grid-template-columns:repeat(4,1fr)}
@@ -265,7 +268,7 @@ footer .wrap{display:grid;gap:10px}
       <div class="screen">
         <div class="top"><span>Trening A · Noge</span><span id="hSetLbl">Serija 1/3</span></div>
         <div class="exname">Čučanj</div>
-        <svg class="fig" id="heroFig" viewBox="20 0 160 185"></svg>
+        <svg class="fig" id="heroFig" viewBox="20 0 170 200"></svg>
         <div class="counter">
           <div>
             <div class="lbl" id="hLbl">Ponavljanja</div>
@@ -341,7 +344,7 @@ footer .wrap{display:grid;gap:10px}
     <h2>Jedna aplikacija umesto svih ostalih</h2>
     <div class="grid c2 c4">
       <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 3 8-9"/><path d="M15 6h5v5"/></svg></div><h3>Praćenje težine</h3><p>Unesi težinu i gledaj kako se linija pomera. Uskoro i sastav tela (masti, mišići) uz podržane vage i senzore.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="M12 7v7M8 10h8M12 14l-3 6M12 14l3 6"/></svg></div><h3>Prikaz svake vežbe</h3><p>Video izvođenja, slike i kratak opis: kako se radi, koji mišići rade i gde se najčešće greši.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="M12 7v7M8 10h8M12 14l-3 6M12 14l3 6"/></svg></div><h3>Prikaz svake vežbe</h3><p>Animirani prikaz izvođenja i kratak opis: kako se radi i koji mišići rade. U bazi je preko 900 vežbi, sa pretragom po imenu i mišićnoj grupi.</p></div>
       <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg></div><h3>Brojači i tajmeri</h3><p>Ponavljanja, serije i pauze su već podešeni. Ti samo vežbaš, aplikacija vodi računa o ostalom.</p></div>
       <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M2 12h3M19 12h3M5 8v8M19 8v8M8 6v12M16 6v12M8 12h8"/></svg></div><h3>Tvoja oprema, tvoj plan</h3><p>Izaberi iz baze kućne i profesionalne opreme šta imaš. Dobijaš samo vežbe koje zaista možeš da uradiš.</p></div>
       <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3c2 3 5 5 5 9a5 5 0 01-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3 0-5 1-8z"/></svg></div><h3>Zagrevanje</h3><p>Kratke, proverene rutine u vojničkom stilu koje pripremaju telo baš za trening koji sledi.</p></div>
@@ -389,14 +392,15 @@ footer .wrap{display:grid;gap:10px}
     <div class="chips" id="cDemo" role="group" aria-label="Izaberi vežbu" style="margin-top:22px"></div>
     <div class="player">
       <div class="stage">
-        <span class="pill">AI silueta · ilustracija</span>
-        <svg class="fig" id="demoFig" viewBox="20 0 160 185" role="img" aria-label="Animirana silueta koja izvodi vežbu"></svg>
+        <span class="pill">Animirani prikaz</span>
+        <div class="sexpick" id="cSex" role="group" aria-label="Izaberi figuru"></div>
+        <svg class="fig" id="demoFig" viewBox="20 0 170 200" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Animirani crtež vežbača koji izvodi vežbu"></svg>
       </div>
       <div class="cue">
         <h3 id="dName"></h3>
         <ol id="dCues"></ol>
         <p class="muscles"><b>Mišići:</b> <span id="dMus"></span></p>
-        <p class="note">U aplikaciji vežbe prikazuje AI silueta u video formi. Snimke sa pravim trenerima dodajemo naknadno.</p>
+        <p class="note">Ovako izgleda prikaz u aplikaciji: vežbe iz tvog plana, zagrevanje i istezanje imaju animirani crtež — mušku ili žensku figuru, prema tvom profilu.</p>
       </div>
     </div>
   </div>
@@ -532,6 +536,7 @@ footer .wrap{display:grid;gap:10px}
 
 <div class="sticky" id="sticky"><a class="btn" href="#prijava">Prijavi se za rani pristup</a></div>
 
+<script src="figure.js"></script>
 <script>
 (function(){
 "use strict";
@@ -548,61 +553,30 @@ var WAITLIST_ENDPOINT = SUPABASE_URL && SUPABASE_ANON_KEY ? SUPABASE_URL.replace
 var $ = function(id){ return document.getElementById(id); };
 var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/* ---------- SILUETA ---------- */
+/* ---------- FIGURA (isti crtež kao u aplikaciji, iz figure.js) ---------- */
 var NS = "http://www.w3.org/2000/svg";
-function lerp(a,b,t){ return a+(b-a)*t; }
-function rad(d){ return d*Math.PI/180; }
-function ik(p1,p2,l1,l2,pref){
-  var dx=p2[0]-p1[0], dy=p2[1]-p1[1], d=Math.min(Math.hypot(dx,dy), l1+l2-0.01);
-  var a=(l1*l1-l2*l2+d*d)/(2*d), h=Math.sqrt(Math.max(0,l1*l1-a*a));
-  var ux=dx/Math.hypot(dx,dy), uy=dy/Math.hypot(dx,dy);
-  var mx=p1[0]+a*ux, my=p1[1]+a*uy;
-  var c1=[mx-uy*h,my+ux*h], c2=[mx+uy*h,my-ux*h];
-  var s1=(c1[0]-mx)*pref[0]+(c1[1]-my)*pref[1], s2=(c2[0]-mx)*pref[0]+(c2[1]-my)*pref[1];
-  return s1>s2?c1:c2;
-}
-var POSES = {
-  squat:function(p){
-    var A=[104,170], H=[lerp(100,80,p),lerp(88,128,p)], K=ik(H,A,42,42,[1,0]);
-    var a=rad(lerp(4,38,p)), S=[H[0]+46*Math.sin(a),H[1]-46*Math.cos(a)];
-    var hd=[S[0]+16*Math.sin(a*.8),S[1]-16*Math.cos(a*.8)];
-    var b=rad(lerp(85,5,p)), hand=[S[0]+38*Math.cos(b),S[1]+38*Math.sin(b)];
-    return {segs:[[H,K,11],[K,A,10],[[98,172],[124,172],8],[H,S,15],[S,hand,8]],head:hd};
-  },
-  pushup:function(p){
-    var T=[38,168], th=rad(lerp(25,7,p)), u=[Math.cos(th),-Math.sin(th)];
-    var Hp=[T[0]+58*u[0],T[1]+58*u[1]], S=[T[0]+108*u[0],T[1]+108*u[1]], hand=[140,170];
-    var E=ik(S,hand,25,25,[-1,-.2]);
-    var hd=[S[0]+17*Math.cos(th+.15),S[1]-17*Math.sin(th+.15)];
-    return {segs:[[T,Hp,11],[Hp,S,15],[S,E,8],[E,hand,8]],head:hd};
-  },
-  crunch:function(p){
-    var H=[112,164], K=[142,132], F=[166,168], ph=rad(lerp(4,42,p));
-    var S=[H[0]-50*Math.cos(ph),H[1]-50*Math.sin(ph)];
-    var hd=[S[0]-16*Math.cos(ph+.2),S[1]-16*Math.sin(ph+.2)];
-    var dx=K[0]-S[0], dy=K[1]-S[1], d=Math.hypot(dx,dy);
-    var hand=[S[0]+36*dx/d,S[1]+36*dy/d];
-    return {segs:[[H,K,11],[K,F,10],[H,S,15],[S,hand,8]],head:hd};
-  }
-};
+var F = window.FitFigure;
 function makeFig(svg){
-  svg.innerHTML='<defs><linearGradient id="fg" gradientUnits="userSpaceOnUse" x1="40" y1="20" x2="160" y2="180"><stop offset="0" stop-color="#C8F53C"/><stop offset="1" stop-color="#22D3C5"/></linearGradient></defs><line class="ground" x1="24" y1="178" x2="176" y2="178"/>';
-  var lines=[], i;
-  for(i=0;i<5;i++){ var l=document.createElementNS(NS,"line"); svg.appendChild(l); lines.push(l); }
-  var head=document.createElementNS(NS,"circle"); head.setAttribute("class","h"); head.setAttribute("r",9.5); svg.appendChild(head);
-  return function(pose){
-    for(var j=0;j<lines.length;j++){
-      var s=pose.segs[j], l=lines[j];
-      if(!s){ l.style.display="none"; continue; }
-      l.style.display="";
-      l.setAttribute("x1",s[0][0].toFixed(1)); l.setAttribute("y1",s[0][1].toFixed(1));
-      l.setAttribute("x2",s[1][0].toFixed(1)); l.setAttribute("y2",s[1][1].toFixed(1));
-      l.setAttribute("stroke-width",s[2]);
+  if(!F) return function(){};
+  var ground=document.createElementNS(NS,"line"); ground.setAttribute("class","ground");
+  ground.setAttribute("y1",F.GROUND_Y); ground.setAttribute("y2",F.GROUND_Y); svg.appendChild(ground);
+  var paths=[], cur="";
+  return function(anim,t,sex){
+    var def=F.ANIMS[anim], v=def.view;
+    if(cur!==anim){ cur=anim; svg.setAttribute("viewBox",v.join(" ")); ground.setAttribute("x1",v[0]); ground.setAttribute("x2",v[0]+v[2]); }
+    var sh=F.drawFigure(def.pose(t),sex), i, p, x;
+    for(i=0;i<sh.length;i++){
+      p=paths[i]; x=sh[i];
+      if(!p){ p=document.createElementNS(NS,"path"); svg.appendChild(p); paths.push(p); }
+      p.style.display="";
+      p.setAttribute("d",x.d); p.setAttribute("fill",x.fill);
+      if(x.stroke){ p.setAttribute("stroke",x.stroke); p.setAttribute("stroke-width",x.sw); } else p.removeAttribute("stroke");
     }
-    head.setAttribute("cx",pose.head[0].toFixed(1)); head.setAttribute("cy",pose.head[1].toFixed(1));
+    for(;i<paths.length;i++) paths[i].style.display="none";
   };
 }
 var drawHero = makeFig($("heroFig")), drawDemo = makeFig($("demoFig"));
+function heroSex(){ return hero.set%2 ? "f" : "m"; }
 
 /* hero: brojač + pauza */
 var REP_MS=2400, REPS=12, SETS=3, REST_S=6;
@@ -626,18 +600,30 @@ function heroUI(restLeft){
 var DEMOS=[
   {id:"squat",name:"Čučanj",cues:["Stopala u širini ramena, prsti blago ka spolja.","Spuštaj kukove nazad i dole, kolena prate pravac prstiju.","Leđa ravna, pogled napred. Ustani guranjem kroz pete."],mus:"butine, zadnjica, trup"},
   {id:"pushup",name:"Sklek",cues:["Dlanovi ispod ramena, telo u jednoj liniji.","Spuštaj grudi ka podu, laktovi pod uglom od oko 45°.","Ne dozvoli da kukovi propadnu. Izguraj do opruženih ruku."],mus:"grudi, ramena, triceps, trup"},
+  {id:"deadlift",name:"Mrtvo dizanje",cues:["Šipka iznad sredine stopala, stopala u širini kukova.","Leđa ravna, grudi napred. Guraj pod nogama i ispravljaj kukove i kolena zajedno.","Šipka sve vreme ide uz noge. Spuštaj istim putem, kukovima unazad."],mus:"zadnja loža, zadnjica, leđa"},
+  {id:"pullup",name:"Zgib",cues:["Uhvati vratilo nathvatom, malo šire od ramena.","Povuci lopatice nadole, pa vuci laktove ka rebrima dok brada ne pređe vratilo.","Spuštaj se kontrolisano do opruženih ruku, bez ljuljanja."],mus:"leđa, biceps, podlaktice"},
+  {id:"lunge",name:"Iskorak",cues:["Zakorači napred dugim korakom, trup uspravan.","Spuštaj se dok oba kolena ne budu savijena pod približno 90°.","Prednje koleno prati pravac prstiju. Odgurni se prednjom nogom nazad."],mus:"butine, zadnjica"},
   {id:"crunch",name:"Trbušnjak",cues:["Lezi na leđa, kolena savijena, stopala na podu.","Podiži lopatice od poda stezanjem stomaka, bez trzanja vrata.","Spuštaj se polako i kontrolisano."],mus:"prednji trbušni mišići"}
 ];
-var demo=DEMOS[0];
+var demo=DEMOS[0], demoSex="m";
 function setDemo(d){
   demo=d; $("dName").textContent=d.name; $("dMus").textContent=d.mus;
   $("dCues").innerHTML=d.cues.map(function(c){return "<li>"+c+"</li>";}).join("");
   Array.prototype.forEach.call($("cDemo").children,function(b){ b.setAttribute("aria-pressed", b.dataset.id===d.id); });
-  if(reduce) drawDemo(POSES[d.id](.6));
+  if(reduce) drawDemo(d.id,.5,demoSex);
 }
 DEMOS.forEach(function(d){
   var b=document.createElement("button"); b.className="chip t"; b.type="button"; b.textContent=d.name; b.dataset.id=d.id;
   b.onclick=function(){ setDemo(d); }; $("cDemo").appendChild(b);
+});
+[["m","Muška"],["f","Ženska"]].forEach(function(o){
+  var b=document.createElement("button"); b.type="button"; b.textContent=o[1]; b.setAttribute("aria-pressed",o[0]===demoSex);
+  b.onclick=function(){
+    demoSex=o[0];
+    Array.prototype.forEach.call($("cSex").children,function(c){ c.setAttribute("aria-pressed",c===b); });
+    if(reduce) drawDemo(demo.id,.5,demoSex);
+  };
+  $("cSex").appendChild(b);
 });
 setDemo(demo);
 
@@ -647,18 +633,17 @@ function frame(now){
   if(hero.mode==="work"){
     var ph=(el%REP_MS)/REP_MS, done=Math.floor(el/REP_MS);
     if(done!==hero.rep){ hero.rep=done; if(hero.rep>=REPS){ hero.rep=REPS; heroUI(); hero.mode="rest"; hero.t0=now; hero.last=-1; } else heroUI(); }
-    if(hero.mode==="work") drawHero(POSES.squat(.5-.5*Math.cos(ph*2*Math.PI)));
+    if(hero.mode==="work") drawHero("squat",ph,heroSex());
   } else {
-    drawHero(POSES.squat(0));
+    drawHero("squat",0,heroSex());
     var left=REST_S-Math.floor(el/1000);
     if(left<=0){ hero.mode="work"; hero.rep=0; hero.set=hero.set%SETS+1; hero.t0=now; heroUI(); }
     else if(left!==hero.last){ hero.last=left; heroUI(left); }
   }
-  var dp=(now%2600)/2600;
-  drawDemo(POSES[demo.id](.5-.5*Math.cos(dp*2*Math.PI)));
+  if(F) drawDemo(demo.id,F.cycle(demo.id,now),demoSex);
   requestAnimationFrame(frame);
 }
-if(reduce){ drawHero(POSES.squat(.6)); hero.rep=8; heroUI(); }
+if(reduce){ drawHero("squat",.5,"f"); hero.rep=8; heroUI(); }
 else { heroUI(); requestAnimationFrame(frame); }
 
 /* ---------- SASTAVLJAČ TRENINGA ---------- */
