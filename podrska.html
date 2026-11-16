@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Podrži razvoj — FitAIO</title>
+<meta name="description" content="FitAIO je besplatna aplikacija. Ako ti se sviđa, razvoj možeš da podržiš dobrovoljnom uplatom.">
+<meta name="theme-color" content="#0A0F0D">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+:root{--bg:#0A0F0D;--surface:#111917;--surface2:#17221E;--line:#24332D;--text:#ECF4F0;--muted:#9BAFA6;--lime:#C8F53C;--teal:#22D3C5;--ink:#0B1410;--grad:linear-gradient(100deg,var(--lime),var(--teal))}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:16px;line-height:1.65}
+a{color:var(--teal)}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px}
+header{position:sticky;top:0;z-index:10;background:rgba(10,15,13,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-weight:900;font-size:1.3rem;letter-spacing:-.03em;text-decoration:none;color:var(--text)}
+.logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.back{font-weight:700;font-size:.92rem;text-decoration:none;color:var(--text);border:1.5px solid var(--line);border-radius:999px;padding:8px 16px}
+main.wrap{padding:44px 18px 70px}
+h1{font-size:clamp(1.9rem,7vw,2.8rem);line-height:1.12;letter-spacing:-.02em;margin:0}
+h2{font-size:1.25rem;letter-spacing:-.01em;margin:0 0 6px}
+p,li{color:#C9D6D0}
+p{margin:10px 0}
+ul{padding-left:20px;margin:10px 0}
+strong{color:var(--text)}
+.lead{color:var(--muted);font-size:1.08rem;margin-top:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;margin-top:18px}
+.btn{display:inline-block;background:var(--lime);color:var(--ink);font-weight:800;text-decoration:none;border-radius:999px;padding:13px 24px;margin-top:10px}
+.slip{width:100%;border-collapse:collapse;margin-top:10px;font-size:.96rem}
+.slip th,.slip td{text-align:left;vertical-align:top;padding:9px 0;border-top:1px solid var(--line)}
+.slip th{color:var(--muted);font-weight:600;width:42%;padding-right:12px}
+.slip td{color:var(--text);font-weight:700;word-break:break-word}
+.qr{display:block;width:220px;max-width:100%;height:auto;background:#fff;border-radius:12px;padding:10px;margin-top:14px}
+.small{color:var(--muted);font-size:.9rem}
+[hidden]{display:none!important}
+footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:.86rem}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="index.html">Fit<span>AIO</span></a>
+    <a class="back" href="index.html">← Nazad</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Podrži razvoj</h1>
+  <p class="lead">FitAIO je besplatan i ostaje besplatan. Ako ti koristi, dobrovoljnom uplatom pomažeš da dodamo nove vežbe i mogućnosti.</p>
+
+  <div class="card">
+    <h2>Dobro je da znaš</h2>
+    <ul>
+      <li>Uplata je <strong>dobrovoljna</strong> i ne otključava ništa u aplikaciji: sve što je besplatno ostaje dostupno svima.</li>
+      <li>Ceo iznos ide za razvoj aplikacije FitAIO.</li>
+      <li>Ovo nije humanitarna donacija i ne ostvaruje poreske olakšice.</li>
+    </ul>
+  </div>
+
+  <div class="card" id="soon">
+    <h2>Uplate se uskoro otvaraju</h2>
+    <p>Još podešavamo načine uplate. Do tada nam najviše pomažeš tako što aplikaciju koristiš, pošalješ komentar iz nje i preporučiš je nekome.</p>
+  </div>
+
+  <div class="card" id="ips" hidden>
+    <h2>Iz Srbije: uplata na račun</h2>
+    <p>U aplikaciji svoje banke izaberi plaćanje i upiši podatke ispod, ili skeniraj IPS QR kod ako je prikazan. Iznos biraš ti.</p>
+    <table class="slip">
+      <tr><th>Primalac</th><td id="ipsName"></td></tr>
+      <tr><th>Račun primaoca</th><td id="ipsAcc"></td></tr>
+      <tr><th>Svrha uplate</th><td>Podrška razvoju aplikacije FitAIO</td></tr>
+      <tr><th>Šifra plaćanja</th><td>289</td></tr>
+    </table>
+    <img class="qr" id="ipsQr" alt="NBS IPS QR kod za uplatu" hidden>
+    <p class="small" id="ipsQrNote" hidden>NBS IPS QR · skeniraj u aplikaciji svoje banke</p>
+  </div>
+
+  <div class="card" id="pp" hidden>
+    <h2>Iz inostranstva: PayPal</h2>
+    <p>Karticom ili sa PayPal naloga. Uplatu obrađuje PayPal; mi ne vidimo podatke o tvojoj kartici.</p>
+    <a class="btn" id="ppLink" rel="noopener">Uplati preko PayPal-a</a>
+  </div>
+
+  <p class="small" style="margin-top:26px">Pitanja o uplatama: <a href="mailto:fitposaomil1@gmail.com">fitposaomil1@gmail.com</a> · <a href="privatnost.html">Politika privatnosti</a></p>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 FitAIO · <a href="index.html">Početna</a></div>
+</footer>
+
+<script>
+/* ---------- PODEŠAVANJE ----------
+   Dok su vrednosti prazne, stranica prikazuje poruku „Uplate se uskoro otvaraju".
+   PAYPAL_URL: adresa tvoje PayPal stranice za uplatu (npr. https://paypal.me/ime).
+   IPS.racun:  broj računa kako ga daje banka (npr. 160-0000000000000-00).
+   IPS.primalac: ime ili naziv i mesto, kako glasi na računu.
+   IPS.qr: putanja do slike IPS QR koda (npr. ips-qr.png); ostavi prazno ako je nema. */
+var PAYPAL_URL = "";
+var IPS = { racun: "", primalac: "", qr: "" };
+
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var any = false;
+  if (IPS.racun && IPS.primalac) {
+    any = true;
+    $("ipsName").textContent = IPS.primalac;
+    $("ipsAcc").textContent = IPS.racun;
+    if (IPS.qr) { $("ipsQr").src = IPS.qr; $("ipsQr").hidden = false; $("ipsQrNote").hidden = false; }
+    $("ips").hidden = false;
+  }
+  if (/^https:\/\//.test(PAYPAL_URL)) {
+    any = true;
+    $("ppLink").href = PAYPAL_URL;
+    $("pp").hidden = false;
+  }
+  if (any) $("soon").hidden = true;
+})();
+</script>
+</body>
+</html>
