@@ -399,7 +399,7 @@ footer .wrap{display:grid;gap:10px}
       <div class="cue">
         <h3 id="dName"></h3>
         <ol id="dCues"></ol>
-        <p class="muscles"><b>Mišići:</b> <span id="dMus"></span></p>
+        <p class="muscles"><b>Mišići:</b> <span id="dMus"></span> <span style="color:var(--muted)">— na crtežu obeleženi crvenom.</span></p>
         <p class="note">Ovako izgleda prikaz u aplikaciji: vežbe iz tvog plana, zagrevanje i istezanje imaju animirani crtež — mušku ili žensku figuru, prema tvom profilu.</p>
       </div>
     </div>
@@ -564,7 +564,7 @@ function makeFig(svg){
   return function(anim,t,sex){
     var def=F.ANIMS[anim], v=def.view;
     if(cur!==anim){ cur=anim; svg.setAttribute("viewBox",v.join(" ")); ground.setAttribute("x1",v[0]); ground.setAttribute("x2",v[0]+v[2]); }
-    var sh=F.drawFigure(def.pose(t),sex), i, p, x;
+    var sh=F.drawFigure(def.pose(t),sex,F.musclesOf(anim)), i, p, x;
     for(i=0;i<sh.length;i++){
       p=paths[i]; x=sh[i];
       if(!p){ p=document.createElementNS(NS,"path"); svg.appendChild(p); paths.push(p); }
