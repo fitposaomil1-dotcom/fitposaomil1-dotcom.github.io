@@ -469,7 +469,7 @@ footer .wrap{display:grid;gap:10px}
     <h2>Koji je tvoj cilj?</h2>
     <p class="lead">Od cilja zavisi sve: izbor vežbi, broj ponavljanja, pauze i tempo napredovanja.</p>
     <div class="grid c2 c5">
-      <div class="card goal"><h3>Mršavljenje</h3><p>Manje masti, uz očuvanje mišića. Kombinacija vežbi snage i kraćih pauza.</p><div class="k">Više ponavljanja · kraće pauze</div></div>
+      <div class="card goal"><h3>Gubitak telesne mase</h3><p>Manje masti, uz očuvanje mišića. Kombinacija vežbi snage i kraćih pauza.</p><div class="k">Više ponavljanja · kraće pauze</div></div>
       <div class="card goal"><h3>Rast mišića</h3><p>Veći obim i masa. Više serija po mišićnoj grupi i postepeno veća težina.</p><div class="k">8–12 ponavljanja · više serija</div></div>
       <div class="card goal"><h3>Oblikovanje i zatezanje</h3><p>„Zategnut" izgled nije poseban trening: to je malo više mišića i malo manje masti u isto vreme.</p><div class="k">Snaga + kondicija zajedno</div></div>
       <div class="card goal"><h3>Snaga</h3><p>Da podigneš više. Teže varijante, manje ponavljanja i duže pauze.</p><div class="k">Manje ponavljanja · duže pauze</div></div>
@@ -564,7 +564,7 @@ function makeFig(svg){
   return function(anim,t,sex){
     var def=F.ANIMS[anim], v=def.view;
     if(cur!==anim){ cur=anim; svg.setAttribute("viewBox",v.join(" ")); ground.setAttribute("x1",v[0]); ground.setAttribute("x2",v[0]+v[2]); }
-    var sh=F.drawFigure(def.pose(t),sex,F.musclesOf(anim)), i, p, x;
+    var sh=F.render(anim,t,sex), i, p, x;
     for(i=0;i<sh.length;i++){
       p=paths[i]; x=sh[i];
       if(!p){ p=document.createElementNS(NS,"path"); svg.appendChild(p); paths.push(p); }
@@ -603,6 +603,7 @@ var DEMOS=[
   {id:"deadlift",name:"Mrtvo dizanje",cues:["Šipka iznad sredine stopala, stopala u širini kukova.","Leđa ravna, grudi napred. Guraj pod nogama i ispravljaj kukove i kolena zajedno.","Šipka sve vreme ide uz noge. Spuštaj istim putem, kukovima unazad."],mus:"zadnja loža, zadnjica, leđa"},
   {id:"pullup",name:"Zgib",cues:["Uhvati vratilo nathvatom, malo šire od ramena.","Povuci lopatice nadole, pa vuci laktove ka rebrima dok brada ne pređe vratilo.","Spuštaj se kontrolisano do opruženih ruku, bez ljuljanja."],mus:"leđa, biceps, podlaktice"},
   {id:"lunge",name:"Iskorak",cues:["Zakorači napred dugim korakom, trup uspravan.","Spuštaj se dok oba kolena ne budu savijena pod približno 90°.","Prednje koleno prati pravac prstiju. Odgurni se prednjom nogom nazad."],mus:"butine, zadnjica"},
+  {id:"raisef",name:"Odručenja",cues:["Stani uspravno, bučice uz telo, laktovi blago savijeni.","Podiži ruke u stranu do visine ramena, bez zamaha trupom.","Spuštaj polako, ne dozvoli da bučice padnu."],mus:"ramena"},
   {id:"crunch",name:"Trbušnjak",cues:["Lezi na leđa, kolena savijena, stopala na podu.","Podiži lopatice od poda stezanjem stomaka, bez trzanja vrata.","Spuštaj se polako i kontrolisano."],mus:"prednji trbušni mišići"}
 ];
 var demo=DEMOS[0], demoSex="m";
@@ -648,7 +649,7 @@ else { heroUI(); requestAnimationFrame(frame); }
 
 /* ---------- SASTAVLJAČ TRENINGA ---------- */
 var GOALS=[
-  {id:"fat",n:"Mršavljenje",hint:"Manje masti uz očuvanje mišića.",auto:45,rx:"3 × 12–15",rest:"45 s",cardio:1},
+  {id:"fat",n:"Gubitak telesne mase",hint:"Manje masti uz očuvanje mišića.",auto:45,rx:"3 × 12–15",rest:"45 s",cardio:1},
   {id:"mus",n:"Rast mišića",hint:"Veći obim i masa mišića.",auto:60,rx:"4 × 8–12",rest:"90 s",cardio:0},
   {id:"tone",n:"Oblikovanje i zatezanje",hint:"Malo više mišića i malo manje masti u isto vreme.",auto:45,rx:"3 × 10–15",rest:"60 s",cardio:.5},
   {id:"str",n:"Snaga",hint:"Da podigneš više: teže varijante, duže pauze.",auto:60,rx:"4 × 4–6",rest:"2–3 min",cardio:0},
