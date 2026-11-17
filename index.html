@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FitAIO — sve za trening u jednoj aplikaciji</title>
-<meta name="description" content="FitAIO je Android aplikacija koja objedinjuje praćenje težine, zagrevanje, vežbe, programe, jogu, pilates, istezanje i praćenje napretka. Plan prema tvom cilju i opremi koju imaš. Za žene i muškarce.">
+<meta name="description" content="FitAIO je Android aplikacija koja objedinjuje praćenje težine, zagrevanje, vežbe, programe, jogu, pilates, istezanje, muziku i praćenje napretka, na srpskom i engleskom. Plan prema tvom cilju i opremi koju imaš. Za žene i muškarce.">
 <meta name="theme-color" content="#0A0F0D">
 <meta property="og:title" content="FitAIO — sve za trening u jednoj aplikaciji">
 <meta property="og:description" content="Jedna aplikacija umesto svih ostalih. Plan prema tvom cilju i opremi. Uskoro na Androidu.">
@@ -168,6 +168,10 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;heigh
 
 /* goals */
 .goal h3{font-size:1.2rem}
+.soon{font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:var(--teal);border-radius:999px;padding:2px 8px;vertical-align:middle;margin-left:6px}
+.heat{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-flow:column;grid-template-rows:repeat(7,1fr);gap:4px}
+.heat i{aspect-ratio:1;border-radius:4px;background:#1E2B26}
+.heat i.h1{background:rgba(200,245,60,.45)}.heat i.h2{background:rgba(200,245,60,.7)}.heat i.h3{background:#C8F53C}.heat i.hf{background:transparent;border:1px solid #24332D}
 .goal .k{font-size:.8rem;color:var(--teal);font-weight:700;margin-top:10px}
 
 /* everyone */
@@ -344,13 +348,17 @@ footer .wrap{display:grid;gap:10px}
     <h2>Jedna aplikacija umesto svih ostalih</h2>
     <div class="grid c2 c4">
       <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 3 8-9"/><path d="M15 6h5v5"/></svg></div><h3>Praćenje težine</h3><p>Unesi težinu i gledaj kako se linija pomera. Uskoro i sastav tela (masti, mišići) uz podržane vage i senzore.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="M12 7v7M8 10h8M12 14l-3 6M12 14l3 6"/></svg></div><h3>Prikaz svake vežbe</h3><p>Animirani prikaz izvođenja i kratak opis: kako se radi i koji mišići rade. U bazi je preko 900 vežbi, sa pretragom po imenu i mišićnoj grupi.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg></div><h3>Brojači i tajmeri</h3><p>Ponavljanja, serije i pauze su već podešeni. Ti samo vežbaš, aplikacija vodi računa o ostalom.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="2"/><path d="M12 7v7M8 10h8M12 14l-3 6M12 14l3 6"/></svg></div><h3>Prikaz svake vežbe</h3><p>Animirani crtež, sa strane ili spreda, sa istaknutim mišićima koji rade. Preko 900 vežbi sa uputstvom i pretragom; svaku možeš da zameniš sličnom.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9 2h6"/></svg></div><h3>Brojači, tajmeri i zvuk</h3><p>Ponavljanja, serije i pauze su podešeni. Zvučni signal i vibracija javljaju početak, poslednje sekunde i kraj, pa telefon ne moraš da gledaš.</p></div>
       <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M2 12h3M19 12h3M5 8v8M19 8v8M8 6v12M16 6v12M8 12h8"/></svg></div><h3>Tvoja oprema, tvoj plan</h3><p>Izaberi iz baze kućne i profesionalne opreme šta imaš. Dobijaš samo vežbe koje zaista možeš da uradiš.</p></div>
       <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3c2 3 5 5 5 9a5 5 0 01-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3 0-5 1-8z"/></svg></div><h3>Zagrevanje</h3><p>Kratke, proverene rutine u vojničkom stilu koje pripremaju telo baš za trening koji sledi.</p></div>
       <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2"/><path d="M6 8v5l6 2 6-6M12 15l-2 6"/></svg></div><h3>Istezanje</h3><p>Vođeno istezanje posle treninga, prilagođeno mišićima koji su tog dana radili.</p></div>
       <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M4 20h4v-6H4zM10 20h4V9h-4zM16 20h4V4h-4z"/></svg></div><h3>Progresivno opterećenje</h3><p>Svaki trening je malo zahtevniji od prethodnog — taman toliko da napreduješ bez preterivanja.</p></div>
-      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="17" rx="2"/><path d="M8 2v4M16 2v4M4 10h16M8 14l2.5 2.5L16 12"/></svg></div><h3>Plan na duže staze</h3><p>Ne samo današnji trening, nego plan za naredne nedelje i mesece, vezan za tvoj cilj.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="17" rx="2"/><path d="M8 2v4M16 2v4M4 10h16M8 14l2.5 2.5L16 12"/></svg></div><h3>Nedeljni cilj i niz</h3><p>Izabereš koliko treninga nedeljno želiš, a prsten se puni sa svakim treningom. Niz dana i lični rekordi te teraju dalje.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div><h3>Tvoja muzika</h3><p>Ubaci svoje pesme i pusti ih u aplikaciji, nasumično ili redom, ili jednim dodirom otvori Spotify, Deezer ili YouTube Music.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div><h3>Srpski i engleski</h3><p>Cela aplikacija, nazivi i uputstva za vežbe na srpskom, a jednim dodirom i na engleskom.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></div><h3>Nalog i rezervna kopija <span class="soon">uskoro</span></h3><p>Prijava Google nalogom. Treninzi i napredak se čuvaju uz nalog, pa ih imaš i na novom telefonu.</p></div>
+      <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><rect x="7" y="6" width="10" height="12" rx="3"/><path d="M9 6l1-3h4l1 3M9 18l1 3h4l1-3M12 10v3l2 1"/></svg></div><h3>Satovi i narukvice <span class="soon">uskoro</span></h3><p>Koraci, puls i kalorije sa sata ili narukvice preko Health Connect: Samsung, Fitbit, Garmin, Xiaomi i drugi.</p></div>
     </div>
   </div>
 </section>
@@ -411,11 +419,12 @@ footer .wrap{display:grid;gap:10px}
   <div class="wrap reveal">
     <span class="eyebrow">Praćenje napretka</span>
     <h2>Vidiš napredak — ukupno i po svakoj vežbi</h2>
-    <div class="grid c2">
+    <p class="lead">Kalendar aktivnosti, nedeljni trend, lični rekordi, mišićne grupe, težina i napredak svake vežbe, na jednom mestu.</p>
+    <div class="grid c2 c3">
       <div class="card">
         <span class="sample">Primer prikaza</span>
         <h3 style="margin-top:6px">Opšti napredak</h3>
-        <p>Težina, broj treninga, ukupno vreme vežbanja i niz bez preskakanja.</p>
+        <p>Težina, broj treninga, minuti, serije, ponavljanja i ukupno podignuti kilogrami.</p>
         <svg class="chart" viewBox="0 0 320 130" role="img" aria-label="Primer grafikona težine koja opada tokom 12 nedelja">
           <defs><linearGradient id="cg" x1="0" x2="1"><stop offset="0" stop-color="#C8F53C"/><stop offset="1" stop-color="#22D3C5"/></linearGradient>
           <linearGradient id="ca" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22D3C5" stop-opacity=".25"/><stop offset="1" stop-color="#22D3C5" stop-opacity="0"/></linearGradient></defs>
@@ -433,6 +442,13 @@ footer .wrap{display:grid;gap:10px}
         <div class="pr"><div class="n">Čučanj sa šipkom<small>radna težina</small></div><div class="v">40 → <b>65 kg</b></div></div>
         <div class="pr"><div class="n">Zgibovi<small>najviše u seriji</small></div><div class="v">2 → <b>9</b></div></div>
         <div class="pr"><div class="n">Plank<small>najduže držanje</small></div><div class="v">0:45 → <b>2:10</b></div></div>
+      </div>
+      <div class="card">
+        <span class="sample">Primer prikaza</span>
+        <h3 style="margin-top:6px">Kalendar i rekordi</h3>
+        <p style="margin-bottom:10px">Svaki trening zasvetli u kalendaru, a novi rekord dobija proslavu i karticu za deljenje.</p>
+        <div class="heat" aria-hidden="true"><i class="h0"></i><i class="h1"></i><i class="h0"></i><i class="h1"></i><i class="h0"></i><i class="h1"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h1"></i><i class="h3"></i><i class="h1"></i><i class="h3"></i><i class="h1"></i><i class="h3"></i><i class="h1"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h2"></i><i class="h1"></i><i class="h2"></i><i class="h1"></i><i class="h2"></i><i class="h1"></i><i class="h2"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h1"></i><i class="h0"></i><i class="h1"></i><i class="h0"></i><i class="h1"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h1"></i><i class="h3"></i><i class="h1"></i><i class="h3"></i><i class="h1"></i><i class="h3"></i><i class="h1"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h0"></i><i class="h2"></i><i class="h1"></i><i class="h2"></i><i class="hf"></i><i class="hf"></i><i class="hf"></i><i class="hf"></i></div>
+        <div class="pr" style="margin-top:12px"><div class="n">Niz<small>treninga zaredom</small></div><div class="v"><b style="color:var(--amber,#FFB23E)">9</b></div></div>
       </div>
     </div>
   </div>
@@ -516,6 +532,10 @@ footer .wrap{display:grid;gap:10px}
       <details><summary>Da li je za početnike?</summary><p>Da. Plan kreće od tvog trenutnog nivoa i napreduje postepeno.</p></details>
       <details><summary>Da li je i za žene i za muškarce?</summary><p>Da. Plan se pravi prema cilju i telu, a delove tela na koje želiš akcenat biraš samostalno.</p></details>
       <details><summary>Ima li joge, pilatesa i meditacije?</summary><p>Da. Uz vežbe snage i kardio, biraš i jogu, pilates i kratke vežbe disanja koje se dodaju na kraj treninga.</p></details>
+      <details><summary>Da li mi treba nalog?</summary><p>Da, prijavljuješ se Google nalogom pri prvom ulasku. Tako se treninzi i napredak čuvaju uz nalog i ne gube se kad promeniš telefon. Lozinku tvog Google naloga ne vidimo.</p></details>
+      <details><summary>Na kom je jeziku?</summary><p>Na srpskom i na engleskom; jezik menjaš jednim dodirom u profilu.</p></details>
+      <details><summary>Mogu li da vežbam uz svoju muziku?</summary><p>Da. Dodaj svoje pesme i pusti ih u aplikaciji, ili otvori Spotify, Deezer ili YouTube Music. Zvučni signali se čuju preko muzike.</p></details>
+      <details><summary>Radi li sa satom ili narukvicom?</summary><p>Uskoro, preko Health Connect na Androidu: koraci, puls i kalorije sa Samsung, Fitbit, Garmin, Xiaomi i drugih uređaja koji upisuju podatke u Health Connect.</p></details>
       <details><summary>Moram li da idem u teretanu?</summary><p>Ne. FitAIO radi bez opreme, sa kućnom opremom i u teretani. Ti označiš šta imaš.</p></details>
       <details><summary>Koliko vremena mi treba?</summary><p>Od 20 minuta po treningu. Aplikacija predlaže trajanje, a ti ga možeš promeniti.</p></details>
       <details><summary>Da li je besplatna?</summary><p>Da, sve navedene funkcionalnosti su besplatne. Kasnije planiramo PRO nivo sa dodatnim mogućnostima i planove ishrane. Ako želiš, razvoj možeš da <a href="podrska.html">podržiš dobrovoljnom uplatom</a>.</p></details>
