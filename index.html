@@ -168,6 +168,32 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;heigh
 
 /* goals */
 .goal h3{font-size:1.2rem}
+.plans,.perks{align-items:stretch}
+.plan{display:flex;flex-direction:column;padding:24px}
+.plan.pro{border-color:rgba(34,211,197,.55);box-shadow:0 0 0 1px rgba(34,211,197,.25),0 20px 60px rgba(34,211,197,.08)}
+.plan-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.plan-top h3{font-size:1.5rem}
+.plan-tag{font-size:.75rem;font-weight:800;color:var(--ink);background:var(--lime);border-radius:999px;padding:4px 10px}
+.plan.pro .plan-tag{background:var(--teal)}
+.price{margin:14px 0 6px;display:flex;align-items:baseline;gap:8px}
+.price b{font-size:2.6rem;font-weight:900;letter-spacing:-.03em}
+.price span{color:var(--muted)}
+.feat{list-style:none;padding:0;margin:10px 0 0;display:grid;gap:10px}
+.feat li{position:relative;padding-left:28px;color:var(--text)}
+.feat li::before{content:"";position:absolute;left:0;top:4px;width:16px;height:16px;border-radius:50%;background:var(--lime);
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' stroke='black' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3.5 8.5l3 3 6-7' stroke='black' stroke-width='2.4' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat}
+.plan.pro .feat li::before{background:var(--teal)}
+.feat .soon{white-space:nowrap;display:inline-block}
+.perks{margin-top:18px}
+.perk{padding:24px;background:linear-gradient(160deg,rgba(200,245,60,.07),transparent 60%),var(--surface)}
+.perk h3{margin-top:12px;font-size:1.2rem}
+.perk-badge{display:inline-block;font-size:.75rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:var(--lime);border-radius:999px;padding:4px 12px}
+.perk-badge.t{background:var(--teal)}
+.perk:has(.perk-badge.t){background:linear-gradient(160deg,rgba(34,211,197,.08),transparent 60%),var(--surface)}
+.steps{margin:14px 0 0;padding-left:20px;display:grid;gap:8px;color:var(--muted)}
+.steps strong{color:var(--text)}
+.perk .btn{margin-top:16px}
 .soon{font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);background:var(--teal);border-radius:999px;padding:2px 8px;vertical-align:middle;margin-left:6px}
 .heat{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-flow:column;grid-template-rows:repeat(7,1fr);gap:4px}
 .heat i{aspect-ratio:1;border-radius:4px;background:#1E2B26}
@@ -262,7 +288,7 @@ footer .wrap{display:grid;gap:10px}
       </div>
       <div class="badges">
         <span class="badge">Android</span>
-        <span class="badge">Rani testeri besplatno</span>
+        <a class="badge" href="#cene" style="text-decoration:none">Rani testeri besplatno ›</a>
         <span class="badge">Za žene i muškarce</span>
         <span class="badge">Kod kuće i u teretani</span>
       </div>
@@ -520,6 +546,61 @@ footer .wrap{display:grid;gap:10px}
       <div class="card"><h3>Isti kvalitet, tvoj plan</h3><p>FitAIO ne deli vežbe na „muške" i „ženske". Plan se pravi prema tvom cilju, telu, opremi i delovima tela na koje želiš da staviš akcenat.</p></div>
       <div class="card"><h3>Ne moraš da budeš profi</h3><p>Aplikacija je za ljude koji žele da izgledaju i osećaju se bolje, a ne za takmičare. Kreće od tvog trenutnog nivoa.</p></div>
     </div>
+  </div>
+</section>
+
+<!-- CENE -->
+<section id="cene">
+  <div class="wrap reveal">
+    <span class="eyebrow">Cene</span>
+    <h2>Jednostavno: dva plana, bez skrivenih troškova</h2>
+    <p class="lead">Plaćaš mesečno preko Google Play-a i otkazuješ kad hoćeš, jednim dodirom u Google Play-u. Tokom probnog testiranja sve je besplatno.</p>
+    <div class="grid c2 plans">
+      <div class="card plan">
+        <div class="plan-top"><h3>Lite</h3><span class="plan-tag">Treninzi</span></div>
+        <div class="price"><b>1,99 €</b><span>/ mesečno</span></div>
+        <ul class="feat">
+          <li>Plan treninga prema cilju, nivou i opremi</li>
+          <li>Kod kuće i u teretani, joga, pilates i disanje</li>
+          <li>Crtani prikaz svake vežbe i uputstvo na srpskom</li>
+          <li>Odbrojavanje, zvučni signali i tvoja muzika</li>
+          <li>Napredak, rekordi, kalendar i praćenje telesne mase</li>
+        </ul>
+      </div>
+      <div class="card plan pro">
+        <div class="plan-top"><h3>Pro</h3><span class="plan-tag">Treninzi + ishrana</span></div>
+        <div class="price"><b>9,99 €</b><span>/ mesečno</span></div>
+        <ul class="feat">
+          <li><strong>Sve iz Lite plana</strong></li>
+          <li>Planovi ishrane i recepti koje sastavlja nutricionista <span class="soon">u pripremi</span></li>
+          <li>Vodiči i materijali u PDF-u <span class="soon">u pripremi</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid c2 perks">
+      <div class="card perk">
+        <div class="perk-badge">Rani testeri</div>
+        <h3>Testiraj sada, koristi besplatno i posle objave</h3>
+        <ol class="steps">
+          <li>Prijavi se za rani pristup ispod.</li>
+          <li>Tokom probnog testiranja na Google Play-u aktivno koristi aplikaciju <strong>bar 10 dana</strong>.</li>
+          <li>Posle zvanične objave FitAIO ti ostaje <strong>besplatan</strong>.</li>
+        </ol>
+        <a class="btn small" href="#prijava">Želim rani pristup</a>
+      </div>
+      <div class="card perk">
+        <div class="perk-badge t">Lovci na greške</div>
+        <h3>Pronađi grešku ili predloži poboljšanje, dobij besplatne mesece</h3>
+        <ol class="steps">
+          <li>U aplikaciji dodirni <strong>„Ostavi komentar za unapređenje"</strong>.</li>
+          <li>Opiši grešku ili predlog.</li>
+          <li>Za svaku prihvaćenu prijavu dobijaš <strong>besplatne mesece</strong> pretplate.</li>
+        </ol>
+        <p class="tiny" style="margin-top:12px;text-align:left">Nagrade važe posle zvanične objave. Ne zavise od ocene u prodavnici.</p>
+      </div>
+    </div>
+    <p class="tiny" style="margin-top:18px;text-align:left">Tačne uslove programa ranih testera i nagrada objavićemo pre početka testiranja. Cene su sa PDV-om gde ga Google Play obračunava i mogu se prikazati u dinarima.</p>
   </div>
 </section>
 
