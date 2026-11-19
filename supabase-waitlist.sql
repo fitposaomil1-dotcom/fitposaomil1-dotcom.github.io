@@ -1,4 +1,4 @@
--- FitAIO: lista čekanja
+-- FormZen: lista čekanja
 -- Pokreni jednom u Supabase > SQL Editor.
 
 create table if not exists public.waitlist (

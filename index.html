@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FitAIO — sve za trening u jednoj aplikaciji</title>
-<meta name="description" content="FitAIO je Android aplikacija koja objedinjuje praćenje težine, zagrevanje, vežbe, programe, jogu, pilates, istezanje, muziku i praćenje napretka, na srpskom i engleskom. Plan prema tvom cilju i opremi koju imaš. Za žene i muškarce.">
+<title>FormZen — sve za trening u jednoj aplikaciji</title>
+<meta name="description" content="FormZen je Android aplikacija koja objedinjuje praćenje težine, zagrevanje, vežbe, programe, jogu, pilates, istezanje, muziku i praćenje napretka, na srpskom i engleskom. Plan prema tvom cilju i opremi koju imaš. Za žene i muškarce.">
 <meta name="theme-color" content="#0A0F0D">
-<meta property="og:title" content="FitAIO — sve za trening u jednoj aplikaciji">
+<meta property="og:title" content="FormZen — sve za trening u jednoj aplikaciji">
 <meta property="og:description" content="Jedna aplikacija umesto svih ostalih. Plan prema tvom cilju i opremi. Uskoro na Androidu.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="sr_RS">
-<!-- Kad stranica dobije konačnu adresu (npr. https://fitaio.rs), zameni je u sledeća tri reda. -->
+<!-- Kad stranica dobije konačnu adresu (npr. https://formzen.app), zameni je u sledeća tri reda. -->
 <meta property="og:url" content="https://fitposaomil1-dotcom.github.io/">
 <meta property="og:image" content="https://fitposaomil1-dotcom.github.io/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -178,6 +178,7 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;heigh
 .price{margin:14px 0 6px;display:flex;align-items:baseline;gap:8px}
 .price b{font-size:2.6rem;font-weight:900;letter-spacing:-.03em}
 .price span{color:var(--muted)}
+.yearly{margin:-2px 0 4px;color:var(--text)}.yearly b{font-weight:800}.yearly span{display:inline-block;margin-left:6px;font-size:.75rem;font-weight:800;color:var(--ink);background:var(--teal);border-radius:999px;padding:2px 8px}
 .feat{list-style:none;padding:0;margin:10px 0 0;display:grid;gap:10px}
 .feat li{position:relative;padding-left:28px;color:var(--text)}
 .feat li::before{content:"";position:absolute;left:0;top:4px;width:16px;height:16px;border-radius:50%;background:var(--lime);
@@ -268,7 +269,7 @@ footer .wrap{display:grid;gap:10px}
 
 <header>
   <div class="wrap">
-    <a class="logo" href="#top" aria-label="FitAIO početna">Fit<span>AIO</span></a>
+    <a class="logo" href="#top" aria-label="FormZen početna"><img src="favicon.svg" width="28" height="28" alt="" style="vertical-align:-7px;margin-right:8px">Form<span>Zen</span></a>
     <a class="btn small" href="#prijava">Rani pristup</a>
   </div>
 </header>
@@ -335,7 +336,7 @@ footer .wrap{display:grid;gap:10px}
   <div class="wrap reveal">
     <span class="eyebrow">Probaj odmah</span>
     <h2>Sastavi svoj trening u 4 dodira</h2>
-    <p class="lead">Izaberi cilj, delove tela, opremu i vreme. Ovo je mali deo onoga što FitAIO radi u aplikaciji.</p>
+    <p class="lead">Izaberi cilj, delove tela, opremu i vreme. Ovo je mali deo onoga što FormZen radi u aplikaciji.</p>
 
     <div class="builder">
       <div class="step">
@@ -359,7 +360,7 @@ footer .wrap{display:grid;gap:10px}
       <div class="step" style="border-bottom:0">
         <h3><b>4</b>Koliko vremena imaš?</h3>
         <div class="chips" id="cTime" role="group" aria-label="Trajanje"></div>
-        <p class="hint">U aplikaciji FitAIO sam predlaže trajanje treninga, serija i pauza na osnovu cilja, visine, težine i tvojih prethodnih rezultata — a ti uvek možeš ručno da promeniš.</p>
+        <p class="hint">U aplikaciji FormZen sam predlaže trajanje treninga, serija i pauza na osnovu cilja, visine, težine i tvojih prethodnih rezultata — a ti uvek možeš ručno da promeniš.</p>
       </div>
 
       <div class="result" id="result" aria-live="polite"></div>
@@ -370,7 +371,7 @@ footer .wrap{display:grid;gap:10px}
 <!-- FEATURES -->
 <section>
   <div class="wrap reveal">
-    <span class="eyebrow">AIO = All In One</span>
+    <span class="eyebrow">Forma i balans u jednoj aplikaciji</span>
     <h2>Jedna aplikacija umesto svih ostalih</h2>
     <div class="grid c2 c4">
       <div class="card"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 4 3 8-9"/><path d="M15 6h5v5"/></svg></div><h3>Praćenje telesne mase</h3><p>Posebna kartica „Telo“: grafikoni za mesec, tri meseca i godinu, nedeljni trend, BMI i cilj sa procenom datuma. Uskoro i automatski unos sa pametnih vaga preko Health Connect.</p></div>
@@ -525,7 +526,7 @@ footer .wrap{display:grid;gap:10px}
   <div class="wrap reveal">
     <span class="eyebrow">Tipovi vežbanja</span>
     <h2>Teretana, joga ili pilates — ti biraš</h2>
-    <p class="lead">Izaberi jedan ili više tipova vežbanja i trening se sastavlja od njih. Ako ne izabereš ništa, FitAIO bira prema tvom cilju.</p>
+    <p class="lead">Izaberi jedan ili više tipova vežbanja i trening se sastavlja od njih. Ako ne izabereš ništa, FormZen bira prema tvom cilju.</p>
     <div class="grid c2 c3">
       <div class="card goal"><h3>Bodybuilding</h3><p>Tegovi i sprave, kod kuće ili u teretani.</p><div class="k">Bučice · šipka · mašine</div></div>
       <div class="card goal"><h3>Kalistenika</h3><p>Snaga sa težinom sopstvenog tela, bez opreme.</p><div class="k">Sklekovi · zgibovi · čučnjevi</div></div>
@@ -543,7 +544,7 @@ footer .wrap{display:grid;gap:10px}
     <span class="eyebrow">Za koga je</span>
     <h2>Za nju i za njega. Za početak i za nastavak.</h2>
     <div class="both">
-      <div class="card"><h3>Isti kvalitet, tvoj plan</h3><p>FitAIO ne deli vežbe na „muške" i „ženske". Plan se pravi prema tvom cilju, telu, opremi i delovima tela na koje želiš da staviš akcenat.</p></div>
+      <div class="card"><h3>Isti kvalitet, tvoj plan</h3><p>FormZen ne deli vežbe na „muške" i „ženske". Plan se pravi prema tvom cilju, telu, opremi i delovima tela na koje želiš da staviš akcenat.</p></div>
       <div class="card"><h3>Ne moraš da budeš profi</h3><p>Aplikacija je za ljude koji žele da izgledaju i osećaju se bolje, a ne za takmičare. Kreće od tvog trenutnog nivoa.</p></div>
     </div>
   </div>
@@ -554,11 +555,12 @@ footer .wrap{display:grid;gap:10px}
   <div class="wrap reveal">
     <span class="eyebrow">Cene</span>
     <h2>Jednostavno: dva plana, bez skrivenih troškova</h2>
-    <p class="lead">Plaćaš mesečno preko Google Play-a i otkazuješ kad hoćeš, jednim dodirom u Google Play-u. Tokom probnog testiranja sve je besplatno.</p>
+    <p class="lead">Prvih <strong>14 dana je besplatno</strong>, a <strong>dva dana pre prve naplate te podsećamo</strong>. Posle toga plaćaš mesečno ili godišnje preko Google Play-a i otkazuješ kad hoćeš, jednim dodirom. Tokom probnog testiranja sve je besplatno.</p>
     <div class="grid c2 plans">
       <div class="card plan">
-        <div class="plan-top"><h3>Lite</h3><span class="plan-tag">Treninzi</span></div>
-        <div class="price"><b>1,99 €</b><span>/ mesečno</span></div>
+        <div class="plan-top"><h3>Lite</h3><span class="plan-tag">14 dana besplatno</span></div>
+        <div class="price"><b>1,99 €</b><span>/ mesečno, posle 14 dana</span></div>
+        <div class="yearly"><b>ili 17,99 € godišnje</b> <span>uštediš 25%</span></div>
         <ul class="feat">
           <li>Plan treninga prema cilju, nivou i opremi</li>
           <li>Kod kuće i u teretani, joga, pilates i disanje</li>
@@ -568,10 +570,11 @@ footer .wrap{display:grid;gap:10px}
         </ul>
       </div>
       <div class="card plan pro">
-        <div class="plan-top"><h3>Pro</h3><span class="plan-tag">Treninzi + ishrana</span></div>
-        <div class="price"><b>9,99 €</b><span>/ mesečno</span></div>
+        <div class="plan-top"><h3>Pro</h3><span class="plan-tag">U izradi</span></div>
+        <div class="price"><b>Uskoro</b><span>treninzi + ishrana</span></div>
         <ul class="feat">
           <li><strong>Sve iz Lite plana</strong></li>
+          <li>Cenu objavljujemo kada Pro bude spreman; rani testeri dobijaju posebnu ponudu</li>
           <li>Planovi ishrane i recepti koje sastavlja nutricionista <span class="soon">u pripremi</span></li>
           <li>Vodiči i materijali u PDF-u <span class="soon">u pripremi</span></li>
         </ul>
@@ -585,7 +588,7 @@ footer .wrap{display:grid;gap:10px}
         <ol class="steps">
           <li>Prijavi se za rani pristup ispod.</li>
           <li>Tokom probnog testiranja na Google Play-u aktivno koristi aplikaciju <strong>bar 10 dana</strong>.</li>
-          <li>Posle zvanične objave FitAIO ti ostaje <strong>besplatan</strong>.</li>
+          <li>Posle zvanične objave FormZen ti ostaje <strong>besplatan</strong>.</li>
         </ol>
         <a class="btn small" href="#prijava">Želim rani pristup</a>
       </div>
@@ -600,7 +603,7 @@ footer .wrap{display:grid;gap:10px}
         <p class="tiny" style="margin-top:12px;text-align:left">Nagrade važe posle zvanične objave. Ne zavise od ocene u prodavnici.</p>
       </div>
     </div>
-    <p class="tiny" style="margin-top:18px;text-align:left">Pročitaj <a href="nagrade.html">uslove programa ranih testera i nagrada</a>; tačne datume testiranja objavljujemo pre njegovog početka. FitAIO nije medicinska aplikacija: pročitaj <a href="odricanje.html">odricanje od odgovornosti</a>. Cene su sa PDV-om gde ga Google Play obračunava i mogu se prikazati u dinarima.</p>
+    <p class="tiny" style="margin-top:18px;text-align:left">Pročitaj <a href="nagrade.html">uslove programa ranih testera i nagrada</a>; tačne datume testiranja objavljujemo pre njegovog početka. FormZen nije medicinska aplikacija: pročitaj <a href="odricanje.html">odricanje od odgovornosti</a>. Cene su sa PDV-om gde ga Google Play obračunava i mogu se prikazati u dinarima.</p>
   </div>
 </section>
 
@@ -617,9 +620,9 @@ footer .wrap{display:grid;gap:10px}
       <details><summary>Na kom je jeziku?</summary><p>Na srpskom i na engleskom; jezik menjaš jednim dodirom u profilu.</p></details>
       <details><summary>Mogu li da vežbam uz svoju muziku?</summary><p>Da. Dodaj svoje pesme i pusti ih u aplikaciji, ili otvori Spotify, Deezer ili YouTube Music. Zvučni signali se čuju preko muzike.</p></details>
       <details><summary>Radi li sa satom ili narukvicom?</summary><p>Uskoro, preko Health Connect na Androidu: koraci, puls i kalorije sa Samsung, Fitbit, Garmin, Xiaomi i drugih uređaja koji upisuju podatke u Health Connect.</p></details>
-      <details><summary>Moram li da idem u teretanu?</summary><p>Ne. FitAIO radi bez opreme, sa kućnom opremom i u teretani. Ti označiš šta imaš.</p></details>
+      <details><summary>Moram li da idem u teretanu?</summary><p>Ne. FormZen radi bez opreme, sa kućnom opremom i u teretani. Ti označiš šta imaš.</p></details>
       <details><summary>Koliko vremena mi treba?</summary><p>Od 20 minuta po treningu. Aplikacija predlaže trajanje, a ti ga možeš promeniti.</p></details>
-      <details><summary>Koliko košta?</summary><p>Tokom probnog testiranja aplikacija je besplatna. Posle zvanične objave na Google Play-u biće dostupna uz mesečnu pretplatu: <strong>Lite</strong> (treninzi) 1,99 € i <strong>Pro</strong> (treninzi uz ishranu, recepte i dodatne materijale) 9,99 €. <strong>Rani testeri</strong> koji aktivno koriste aplikaciju tokom probnog perioda dobijaju je besplatno i posle objave, a korisnici čije prijave grešaka i predlozi budu prihvaćeni dobijaju besplatne mesece. Uslovi su na stranici <a href="nagrade.html">Uslovi programa ranih testera i nagrada</a>.</p></details>
+      <details><summary>Koliko košta?</summary><p>Tokom probnog testiranja aplikacija je besplatna. Posle zvanične objave na Google Play-u <strong>prvih 14 dana je besplatno</strong>, a zatim <strong>Lite</strong> (svi treninzi, napredak, telo i muzika) košta <strong>1,99 € mesečno</strong> ili <strong>17,99 € godišnje</strong>. Dva dana pre prve naplate aplikacija te podseti. Otkazuješ kad hoćeš u Google Play-u; ako otkažeš pre isteka 14 dana, ništa ne plaćaš. <strong>Pro</strong> sa ishranom i receptima je u izradi, a cenu objavljujemo kada bude spreman. <strong>Rani testeri</strong> koji aktivno koriste aplikaciju tokom probnog perioda dobijaju Lite besplatno i posle objave, a prihvaćene prijave grešaka i predlozi donose besplatne mesece. Uslovi su na stranici <a href="nagrade.html">Uslovi programa ranih testera i nagrada</a>.</p></details>
       <details><summary>Kada izlazi?</summary><p>Uskoro, prvo na Androidu. Prijavi se za rani pristup i javićemo ti čim bude spremna.</p></details>
     </div>
   </div>
@@ -630,14 +633,14 @@ footer .wrap{display:grid;gap:10px}
   <div class="wrap reveal">
     <div class="box">
       <h2>Prestani da skupljaš aplikacije.<br><span class="gt">Počni da treniraš.</span></h2>
-      <p class="lead" style="margin-left:auto;margin-right:auto">Ostavi email i javićemo ti kad FitAIO bude spreman za preuzimanje.</p>
+      <p class="lead" style="margin-left:auto;margin-right:auto">Ostavi email i javićemo ti kad FormZen bude spreman za preuzimanje.</p>
       <form id="wl" novalidate>
         <label for="em" style="position:absolute;left:-9999px">Email adresa</label>
         <input id="em" type="email" name="email" placeholder="tvoj@email.com" autocomplete="email" required>
         <button class="btn" type="submit">Javi mi kad izađe</button>
       </form>
       <div class="msg" id="wlMsg" role="status"></div>
-      <p class="tiny">Prijavom pristaješ da ti na ovu adresu javimo kad FitAIO izađe. Bez spama, a odjaviti se možeš u svakom trenutku. <a href="privatnost.html">Politika privatnosti</a></p>
+      <p class="tiny">Prijavom pristaješ da ti na ovu adresu javimo kad FormZen izađe. Bez spama, a odjaviti se možeš u svakom trenutku. <a href="privatnost.html">Politika privatnosti</a></p>
     </div>
   </div>
 </section>
@@ -646,10 +649,10 @@ footer .wrap{display:grid;gap:10px}
 
 <footer>
   <div class="wrap">
-    <div class="logo">Fit<span>AIO</span></div>
+    <div class="logo">Form<span>Zen</span></div>
     <div>Kontakt: <a href="mailto:fitposaomil1@gmail.com">fitposaomil1@gmail.com</a> · <a href="privatnost.html">Politika privatnosti</a> · <a href="odricanje.html">Odricanje od odgovornosti</a> · <a href="nagrade.html">Uslovi nagrada</a> · <a href="podrska.html">Podrži razvoj</a></div>
     <div>Ako imaš zdravstvenih problema ili povreda, posavetuj se sa lekarom pre početka vežbanja.</div>
-    <div>© 2026 FitAIO</div>
+    <div>© 2026 FormZen</div>
   </div>
 </footer>
 
@@ -777,7 +780,7 @@ var GOALS=[
 var FOCUS=[["all","Celo telo"],["grudi","Grudi"],["ledja","Leđa"],["ramena","Ramena"],["ruke","Ruke"],["stomak","Stomak"],["zadnjica","Zadnjica"],["noge","Noge"]];
 var EQ_HOME=[["bucice","Bučice"],["girja","Girja (kettlebell)"],["trake","Elastične trake"],["vratilo","Vratilo za zgibove"],["vijaca","Vijača"],["trx","TRX trake"],["tocak","Točak za trbušnjake"],["klupa","Klupa"]];
 var EQ_GYM=[["sipka","Olimpijska šipka i tegovi"],["rek","Rek za čučanj"],["benc","Bench klupa"],["smit","Smit mašina"],["lat","Lat mašina"],["kabl","Kablovi (sajle)"],["presa","Nožna presa"],["masine","Mašine za noge"],["razboj","Razboj"],["traka","Traka za trčanje"],["bicikl","Sobni bicikl"],["veslac","Veslački trenažer"]];
-var TIMES=[["auto","Neka FitAIO predloži"],[20,"20 min"],[30,"30 min"],[45,"45 min"],[60,"60 min"]];
+var TIMES=[["auto","Neka FormZen predloži"],[20,"20 min"],[30,"30 min"],[45,"45 min"],[60,"60 min"]];
 /* n: naziv, m: grupa, e: oprema (bilo koja od navedenih; prazno = težina tela), k: t=na vreme, c=kardio */
 var EX=[
  {n:"Sklekovi",m:"grudi",e:[]},{n:"Uski sklekovi",m:"ruke",e:[]},{n:"Pike sklekovi",m:"ramena",e:[]},
@@ -899,7 +902,7 @@ $("wl").addEventListener("submit",function(e){
   if(!WAITLIST_ENDPOINT){ m.className="msg warn"; m.textContent="Lista čekanja se uskoro otvara — prijava još nije sačuvana. Navrati ponovo za koji dan."; return; }
   m.className="msg"; m.textContent="Šaljem…";
   fetch(WAITLIST_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json","apikey":SUPABASE_ANON_KEY,"Authorization":"Bearer "+SUPABASE_ANON_KEY,"Prefer":"return=minimal"},body:JSON.stringify({email:em.toLowerCase()})})
-    .then(function(r){ if(!r.ok && r.status!==409) throw 0; /* 409 = email je već na listi */ m.className="msg ok"; m.textContent="Hvala! Javićemo ti čim FitAIO bude spreman."; $("wl").reset(); })
+    .then(function(r){ if(!r.ok && r.status!==409) throw 0; /* 409 = email je već na listi */ m.className="msg ok"; m.textContent="Hvala! Javićemo ti čim FormZen bude spreman."; $("wl").reset(); })
     .catch(function(){ m.className="msg warn"; m.textContent="Nešto nije u redu. Pokušaj ponovo malo kasnije."; });
 });
 
