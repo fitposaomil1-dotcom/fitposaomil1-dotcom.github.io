@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="sr-Latn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brisanje naloga — FormZen</title>
+<meta name="description" content="Kako da obrišeš FormZen nalog i sve podatke: u aplikaciji ili zahtevom emailom.">
+<meta name="theme-color" content="#0A0F0D">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+:root{--bg:#0A0F0D;--surface:#111917;--surface2:#17221E;--line:#24332D;--text:#ECF4F0;--muted:#9BAFA6;--lime:#C8F53C;--teal:#22D3C5;--ink:#0B1410;--grad:linear-gradient(100deg,var(--lime),var(--teal))}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:16px;line-height:1.65}
+a{color:var(--teal)}
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.wrap{max-width:760px;margin:0 auto;padding:0 18px}
+header{position:sticky;top:0;z-index:10;background:rgba(10,15,13,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-weight:900;font-size:1.3rem;letter-spacing:-.03em;text-decoration:none;color:var(--text)}
+.logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.back{font-weight:700;font-size:.92rem;text-decoration:none;color:var(--text);border:1.5px solid var(--line);border-radius:999px;padding:8px 16px}
+main.wrap{padding:44px 18px 70px}
+h1{font-size:clamp(1.9rem,7vw,2.8rem);line-height:1.12;letter-spacing:-.02em;margin:0}
+h2{font-size:1.25rem;letter-spacing:-.01em;margin:0 0 6px}
+p,li{color:#C9D6D0}
+p{margin:10px 0}
+ul{padding-left:20px;margin:10px 0}
+strong{color:var(--text)}
+.lead{color:var(--muted);font-size:1.08rem;margin-top:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;margin-top:18px}
+.btn{display:inline-block;background:var(--lime);color:var(--ink);font-weight:800;text-decoration:none;border-radius:999px;padding:13px 24px;margin-top:10px}
+.slip{width:100%;border-collapse:collapse;margin-top:10px;font-size:.96rem}
+.slip th,.slip td{text-align:left;vertical-align:top;padding:9px 0;border-top:1px solid var(--line)}
+.slip th{color:var(--muted);font-weight:600;width:42%;padding-right:12px}
+.slip td{color:var(--text);font-weight:700;word-break:break-word}
+.qr{display:block;width:220px;max-width:100%;height:auto;background:#fff;border-radius:12px;padding:10px;margin-top:14px}
+.small{color:var(--muted);font-size:.9rem}
+[hidden]{display:none!important}
+footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:.86rem}
+table.slip td{font-weight:700}
+h2{margin-top:26px}
+.card h2{margin-top:0}
+em{color:var(--text)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="index.html"><img src="favicon.svg" width="28" height="28" alt="" style="vertical-align:-7px;margin-right:8px">Form<span>Zen</span></a>
+    <a class="back" href="index.html">← Nazad</a>
+  </div>
+</header>
+
+<main class="wrap">
+  <h1>Brisanje naloga i podataka</h1>
+  <p class="lead">Aplikacija FormZen · podrska@formzen.app · Važi od 22. novembra 2026.</p>
+
+  <div class="card">
+    <h2>Najbrže: u aplikaciji</h2>
+    <ol>
+      <li>Otvori FormZen i idi na <strong>Profil</strong>.</li>
+      <li>Dodirni <strong>Google nalog</strong>, pa <strong>Obriši nalog</strong>.</li>
+      <li>Potvrdi sa <strong>Da, obriši nalog i sve podatke</strong>.</li>
+    </ol>
+    <p>Nalog i podaci se brišu odmah, i na telefonu i na našem serveru.</p>
+  </div>
+
+  <div class="card">
+    <h2>Bez aplikacije: zahtev emailom</h2>
+    <p>Ako više nemaš aplikaciju ili telefon, pošalji email na <a href="mailto:podrska@formzen.app?subject=Brisanje%20naloga">podrska@formzen.app</a> sa naslovom <strong>„Brisanje naloga"</strong>. Pošalji ga sa iste Google adrese kojom se prijavljuješ u FormZen, da bismo znali da je nalog tvoj.</p>
+    <p>Nalog i podatke brišemo u roku od <strong>30 dana</strong>, najčešće mnogo brže, i potvrdimo ti emailom.</p>
+  </div>
+
+  <h2>Šta se briše</h2>
+  <ul>
+    <li>nalog (ime, email, slika profila, Google identifikator);</li>
+    <li>profil (cilj, nivo, oprema, visina), merenja telesne mase, treninzi, programi i ciljevi, podešavanja;</li>
+    <li>veza sa kodom ranih testera i stečene nagrade.</li>
+  </ul>
+
+  <h2>Šta može ostati i koliko dugo</h2>
+  <ul>
+    <li><strong>Rezervne kopije baze:</strong> obrisani podaci iz njih nestaju sami, najkasnije za 30 dana.</li>
+    <li><strong>Komentari i predlozi</strong> poslati iz aplikacije ne sadrže ime ni email; ostaju bez veze sa tobom, da bismo mogli da popravljamo aplikaciju.</li>
+    <li><strong>Podaci o kupovini pretplate</strong> čuva Google Play prema svojim pravilima i propisima; mi ih ne možemo obrisati.</li>
+  </ul>
+
+  <h2>Samo deo podataka</h2>
+  <p>Ako želiš da obrišeš samo neke podatke (npr. merenja telesne mase), možeš ih ukloniti u aplikaciji (kartica <strong>Telo</strong>), ili nam pišeš na <a href="mailto:podrska@formzen.app">podrska@formzen.app</a>.</p>
+
+  <p class="small" style="margin-top:26px">Više o tome kako čuvamo podatke: <a href="privatnost.html">Politika privatnosti</a>.</p>
+</main>
+
+<footer>
+  <div class="wrap">© 2026 FormZen · <a href="index.html">Početna</a> · <a href="privatnost.html">Privatnost</a> · <a href="odricanje.html">Odricanje</a> · <a href="nagrade.html">Nagrade</a></div>
+</footer>
+</body>
+</html>
